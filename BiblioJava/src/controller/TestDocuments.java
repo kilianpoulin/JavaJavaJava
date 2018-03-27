@@ -17,7 +17,7 @@ public class TestDocuments {
 	 */
 	public static void main(String[] args) {
             
-            List<Document> thedocuments = new ArrayList<Document>();
+            Bibliotheque biblio = new Bibliotheque();
 
 		Document[] documents = {
 			new Livre("L'archipel du Goulag", "Soljenitsyne", 250),
@@ -27,13 +27,15 @@ public class TestDocuments {
 			new Livre("La condition humaine", "Malraux", 130),
 			new Manuel("Manuel qualité ISO 9001", "AFNOR", -1, 3)
 		};
-                
+               
+                        
                 for(int i = 0; i < documents.length; i++){
-                    thedocuments.add(documents[i]);
+                    biblio.addDocument(documents[i]);
                 }
-                Bibliotheque biblio = new Bibliotheque(thedocuments);
+                biblio.removeDocument(documents[2]);
                 
-                //biblio.removeDocument(documents[2]); 
+                System.out.println(biblio.getDocument(1));
+                
                 
                 System.out.println("bibliotheque : "+biblio);
 		
