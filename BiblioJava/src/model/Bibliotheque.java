@@ -14,9 +14,13 @@ public class Bibliotheque {
 	 */
 	public Bibliotheque() {
 		// TO DO ... ( "vide" ne veut pas dire null ! )
-		throw new RuntimeException("Bibliotheque() not yet implemented"); 
+                //throw new RuntimeException("Bibliotheque() not yet implemented"); 
 	}
 	
+        public Bibliotheque(List<Document> documents){
+            this.documents = documents;
+        }
+        
 	/**
 	 * Renvoie la liste des documents de la bibliotheque.
 	 */
@@ -42,12 +46,11 @@ public class Bibliotheque {
 	 * sinon renvoie faux.
 	 */
 	public boolean addDocument(Document doc) {
-            // Si doc est null
-            if(doc.getNumEnreg() >= 0){
-                return false;
-               //throw new RuntimeException("addDocument() not yet implemented");
+            // Si doc est null                
+            if(null == doc){
+                    return false;
+                  //throw new RuntimeException("addDocument() not yet implemented");
             }
-                
            
             // Si il le doc appartient déjà à la liste
             for (Document document : documents) {
@@ -80,6 +83,13 @@ public class Bibliotheque {
 
 	@Override
 	public String toString() {
-		return "Bibliotheque de " + documents.size() + " documents";
+            StringBuilder biblio = new StringBuilder();
+            biblio.append("Bibliotheque de " + documents.size() + " documents" + "\n ");
+            
+            for(Document document : documents){
+                biblio.append(document);
+            }
+            biblio.append("\n\nFIN BIBLIO -------------------------------------");
+            return biblio.toString();
 	}	
 }
