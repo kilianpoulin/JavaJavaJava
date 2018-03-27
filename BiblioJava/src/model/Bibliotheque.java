@@ -1,19 +1,21 @@
 package model;
 
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 
 public class Bibliotheque {
 
 	// Liste des documents de la bibliotheque
 	private List<Document> documents;
-
+        
 	/**
 	 * Constructeur d'une bibliotheque dont la liste de documents est vide.
 	 */
 	public Bibliotheque() {
-		// TO DO ... ( "vide" ne veut pas dire null ! )
+                //this.documents = Collections.<Document>emptyList();
+                this.documents = new ArrayList<Document>();
                 //throw new RuntimeException("Bibliotheque() not yet implemented"); 
 	}
 	
