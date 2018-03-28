@@ -48,6 +48,24 @@ public class Roman extends Livre {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
+        
+        builder.append(this.getNumEnreg());
+        builder.append(" - ");
+        builder.append("Roman");
+        builder.append(" - ");
+        builder.append(this.getTitre());
+        builder.append(", ");
+        builder.append(this.getAuteur());
+        builder.append(" - (");
+        builder.append(this.getNbPages());
+        builder.append(" pages)");
+        if(null != this.prixLitteraire){
+            builder.append(" - ");
+            builder.append("Prix ");
+            builder.append(this.getPrixLitt());
+        }
+        builder.append("\n");
+        /*StringBuilder builder = new StringBuilder();
         builder.append("\n");
         builder.append("Ce roman de titre ");
         builder.append(this.getTitre());
@@ -66,7 +84,7 @@ public class Roman extends Livre {
         builder.append(this.getNbPages());
         builder.append(" pages.");
         builder.append("\n");
-        
+        */
         return builder.toString();
     }
 	

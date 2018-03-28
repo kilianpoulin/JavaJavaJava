@@ -15,7 +15,18 @@ public class Revue extends Document {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
+        
+        builder.append(this.getNumEnreg());
+        builder.append(" - ");
+        builder.append("Revue");
+        builder.append(" - ");
+        builder.append(this.getTitre());
+        builder.append(", ");
+        builder.append(this.mois);
+        builder.append("/");
+        builder.append(this.annee);
         builder.append("\n");
+        /*builder.append("\n");
         builder.append("Le titre de cette revue est ");
         builder.append(this.getTitre());
         builder.append("\n");
@@ -23,7 +34,7 @@ public class Revue extends Document {
         builder.append(this.mois);
         builder.append("/");
         builder.append(this.annee);
-        builder.append(".\n");
+        builder.append(".\n");*/
         
         return builder.toString();
     }

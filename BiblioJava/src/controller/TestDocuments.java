@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import view.SaisieDocument;
+import view.Fenetre;
 
 public class TestDocuments {
 
@@ -34,8 +35,8 @@ public class TestDocuments {
 			new Manuel("Manuel qualité ISO 9001", "AFNOR", -1, 3)
 		};
                 
-                SaisieDocument frame = new SaisieDocument();
-                
+                //SaisieDocument frame = new SaisieDocument();
+                Fenetre frame = new Fenetre();
                
                 // on ajoute les documents dans la bibliothèque        
                 for(int i = 0; i < documents.length; i++){

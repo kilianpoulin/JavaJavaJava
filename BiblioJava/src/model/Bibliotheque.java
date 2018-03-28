@@ -96,6 +96,10 @@ public class Bibliotheque {
             Collections.sort(this.documents, TriDocuments.TITRE);
         }
         
+        public void sortAuteur(){
+            Collections.sort(this.documents, TriDocuments.AUTEUR);
+        }
+        
         public void recherchePrixLitt(Roman Prix){
             List<Document> listDoc = new ArrayList<Document>();
             for(Document document : documents){
@@ -198,7 +202,6 @@ public class Bibliotheque {
             for(Document document : documents){
                 biblio.append(document);
             }
-            biblio.append("\n\nFIN BIBLIO -------------------------------------");
             return biblio.toString();
 	}	
 }

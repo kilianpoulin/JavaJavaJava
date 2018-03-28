@@ -21,9 +21,18 @@ public abstract class Document {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
+        
+        builder.append(this.getNumEnreg());
+        builder.append(" - ");
+        builder.append("Document");
+        builder.append(" - ");
+        builder.append(this.titre);
+        builder.append("\n");
+        /*
         builder.append("\n");
         builder.append("Le titre de ce document est ");
         builder.append(this.getTitre());
+        */
         
         return builder.toString();
     }

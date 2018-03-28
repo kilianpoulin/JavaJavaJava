@@ -15,7 +15,19 @@ public class Manuel extends Livre {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
+        builder.append(this.getNumEnreg());
+        builder.append(" - ");
+        builder.append("Manuel");
+        builder.append(" - ");
+        builder.append(this.getTitre());
+        builder.append(", ");
+        builder.append(this.getAuteur());
+        builder.append(" - (");
+        builder.append(this.getNbPages());
+        builder.append(" pages) - Niveau ");
+        builder.append(this.niveau);
         builder.append("\n");
+        /*builder.append("\n");
         builder.append("Ce manuel de titre ");
         builder.append(this.getTitre());
         builder.append(" a été écrit par ");
@@ -27,7 +39,7 @@ public class Manuel extends Livre {
         builder.append("Il comporte ");
         builder.append(this.getNbPages());
         builder.append(" pages.");
-        builder.append("\n");
+        builder.append("\n");*/
         
         return builder.toString();
     }

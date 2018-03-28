@@ -19,6 +19,19 @@ public class Livre extends Document implements InterfaceAuteur {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
+        
+        builder.append(this.getNumEnreg());
+        builder.append(" - ");
+        builder.append("Livre");
+        builder.append(" - ");
+        builder.append(this.getTitre());
+        builder.append(", ");
+        builder.append(this.auteur);
+        builder.append(" - (");
+        builder.append(this.nbPages);
+        builder.append(" pages)");
+        builder.append("\n");
+        /*
         builder.append("\n");
         builder.append("Ce livre de titre ");
         builder.append(this.getTitre());
@@ -28,7 +41,7 @@ public class Livre extends Document implements InterfaceAuteur {
         builder.append("Il comporte ");
         builder.append(this.getNbPages());
         builder.append(" pages.");
-        builder.append("\n");
+        builder.append("\n");*/
         
         return builder.toString();
     }

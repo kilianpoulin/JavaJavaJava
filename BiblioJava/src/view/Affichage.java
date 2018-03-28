@@ -1,15 +1,16 @@
 package view;
 
 import java.util.Collection;
-import javax.swing.*;
 import model.Document;
 
-public class Affichage extends JFrame {
+public interface Affichage {
 
-	public void afficherDocument(Collection<Document> docs){
+	public static String afficherDocument(Collection<Document> docs){
+            StringBuilder biblio = new StringBuilder();
             for(Document document : docs){
-                System.out.println(docs);
+                biblio.append(document);
             }
+            return biblio.toString();
         }
 	
 }
