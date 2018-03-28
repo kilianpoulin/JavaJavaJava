@@ -3,22 +3,45 @@ package model;
 // TO DO ...
 public class Roman extends Livre {
 
-    private int prixLitteraire = 0;
-    public static Roman GONCOURT;
-    public static Roman MEDICIS;
-
+    private Roman prixLitteraire = null;
+    public static Roman GONCOURT = new Roman();
+    public static Roman MEDICIS = new Roman();
+    
+    /**
+     * Constructeur pour créer un roman vide
+    */
+    public Roman(){
+        
+    }
+    /**
+     * Constructeur d'un roman n'ayant pas reçu de prix littéraire
+    */
+    public Roman(String titre, String auteur, int nbPages){
+        super(titre, auteur, nbPages);
+    }
+    
+    /**
+     * Constructeur d'un roman ayant reçu un prix littéraire
+    */
     public Roman(String titre, String auteur, int nbPages, Roman prixLitt){
-        this.setTitre(titre);
-        this.setAuteur(auteur);
-        this.setNbPages(nbPages);
-        this.prixLitteraire++;
+        super(titre, auteur, nbPages);
+        prixLitteraire = prixLitt;
     }
 
-    public int getPrixLitteraire() {
+    public Roman getPrixLitteraire() {
         return prixLitteraire;
     }
+    
+    public String getPrixLitt(){
+        if(this.prixLitteraire == GONCOURT)
+            return "GONCOURT";
+        else if(this.prixLitteraire == MEDICIS)
+            return "MEDICIS";
+        else
+            return "";
+    }
 
-    public void setPrixLitteraire(int prixLitteraire) {
+    public void setPrixLitteraire(Roman prixLitteraire) {
         this.prixLitteraire = prixLitteraire;
     }
     
@@ -31,13 +54,18 @@ public class Roman extends Livre {
         builder.append(" a été écrit par ");
         builder.append(this.getAuteur());
         builder.append("\n");
-        builder.append("Il a reçu ");
-        builder.append(this.prixLitteraire);
-        builder.append(" prix littéraires.");
+        if(null != this.prixLitteraire){
+            builder.append("Il a reçu le prix ");
+            builder.append(this.getPrixLitt());
+        }
+        else
+            builder.append("Il n'a pas reçu prix littéraires.");
+        
         builder.append("\n");
         builder.append("Il comporte ");
         builder.append(this.getNbPages());
         builder.append(" pages.");
+        builder.append("\n");
         
         return builder.toString();
     }

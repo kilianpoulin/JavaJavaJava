@@ -11,7 +11,7 @@ public class Livre extends Document implements InterfaceAuteur {
     }
 
     public Livre(String titre, String auteur, int nbPages){
-        this.setTitre(titre);
+        super(titre);
         this.auteur = auteur;
         this.nbPages = nbPages;
     }
@@ -28,6 +28,7 @@ public class Livre extends Document implements InterfaceAuteur {
         builder.append("Il comporte ");
         builder.append(this.getNbPages());
         builder.append(" pages.");
+        builder.append("\n");
         
         return builder.toString();
     }

@@ -3,18 +3,19 @@ package model;
 // TO DO ...
 public abstract class Document {
 	
-    public static int NB_ENREG = 0;
+    static int Nb_Enreg = 0;
     private int numEnreg;
     private String titre;
 
     public Document(){
-
+        this.numEnreg = Nb_Enreg;
+        Nb_Enreg++;
     }
     
     public Document(String titre){
         this.titre = titre;
-        this.numEnreg = NB_ENREG;
-        NB_ENREG++;
+        this.numEnreg = Nb_Enreg;
+        Nb_Enreg++;
     }
     
     @Override
@@ -42,6 +43,5 @@ public abstract class Document {
     public void setTitre(String titre) {
         this.titre = titre;
     }
-
-        
 }
+

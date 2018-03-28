@@ -27,6 +27,7 @@ public class Manuel extends Livre {
         builder.append("Il comporte ");
         builder.append(this.getNbPages());
         builder.append(" pages.");
+        builder.append("\n");
         
         return builder.toString();
     }
