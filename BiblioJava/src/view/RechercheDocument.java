@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.text.DefaultCaret;
 import model.Bibliotheque;
@@ -63,10 +64,74 @@ public class RechercheDocument extends JFrame implements Affichage {
       
         
          /**
+            * Positionnement du label du champ de saisie "Titre du document".
+            */
+            gbc.gridx = 0;
+            gbc.gridy = 1;
+            gbc.gridwidth = 1;
+            gbc.gridheight = 1;
+            gbc.weightx = 0.;
+            gbc.weighty = 1.;
+            gbc.fill = GridBagConstraints.NONE;
+            gbc.anchor = GridBagConstraints.BASELINE_LEADING; 
+            gbc.insets = new Insets(10, 50, 0, 0);
+            
+            JLabel labelTitre = new JLabel("Titre : ");
+            labelTitre.setHorizontalAlignment(JLabel.CENTER);
+            labelTitre.setFont(new Font("TimesRoman", Font.PLAIN , 24));          
+            getContentPane().add(labelTitre, gbc);
+            
+        /**
+        * Positionnement du champ de saisie "Titre du document".
+        */
+        gbc.gridx = 1; 
+        gbc.gridy = 1;
+        gbc.gridwidth = GridBagConstraints.REMAINDER; 
+        gbc.gridheight = 1; 
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(0, 0, 0, 30);
+
+        final JTextField textTitre = new JTextField();
+        textTitre.setFont(new Font("TimesRoman", Font.PLAIN, 24)); 
+        getContentPane().add(textTitre, gbc);
+
+        /**
+        * Positionnement du label du champ de saisie "Nom de l'auteur".
+        */
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 1;
+        gbc.weightx = 0.;
+        gbc.weighty = 1.;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.BASELINE_LEADING; 
+        gbc.insets = new Insets(0, 50, 0, 0);
+        JLabel labelAuteur = new JLabel("Auteur : ");
+        labelAuteur.setFont(new Font("TimesRoman", Font.PLAIN , 24));          
+        getContentPane().add(labelAuteur, gbc);
+
+        /**
+        * Positionnement du champ de saisie "Nom de l'auteur".
+        */
+        gbc.gridx = 1; 
+        gbc.gridy = 2;
+        gbc.gridwidth = GridBagConstraints.REMAINDER; 
+        gbc.gridheight = 1; 
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(0, 0, 0, 30);
+
+        final JTextField textAuteur = new JTextField();
+        textAuteur.setFont(new Font("TimesRoman", Font.PLAIN, 24)); 
+        getContentPane().add(textAuteur, gbc);
+        
+         /**
          * Positionnement du bouton "Trier par TITRE".
          */        
         gbc.gridx = 0;
-        gbc.gridy = 1; // on se positionne sur la ligne suivante
+        gbc.gridy = 3; // on se positionne sur la ligne suivante
         gbc.gridwidth = 1;
         gbc.gridheight = 1;
         gbc.weightx = 0.;
@@ -74,29 +139,18 @@ public class RechercheDocument extends JFrame implements Affichage {
         gbc.fill = GridBagConstraints.NONE;    
         gbc.anchor = GridBagConstraints.BASELINE_LEADING;
         gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(50, 30, 0, 30);
+        gbc.insets = new Insets(10, 30, 0, 30);
         
-        JButton sortTitre = new JButton("Trier par Titre");
-        sortTitre.setFont(new Font("TimesRoman", Font.PLAIN , 24));
-        getContentPane().add(sortTitre, gbc);
-        
-        /**
-         * Positionnement du bouton "Trier par AUTEUR".
-         */     
-        gbc.gridx = 1;
-        gbc.gridy = 1; // on se positionne sur la ligne suivante
-        gbc.insets = new Insets(50, 0, 0, 30);
-        
-        JButton sortAuteur = new JButton("Trier par Auteur");
-        sortAuteur.setFont(new Font("TimesRoman", Font.PLAIN , 24));
-        getContentPane().add(sortAuteur, gbc);
+        JButton rechercher = new JButton("Trier par Titre");
+        rechercher.setFont(new Font("TimesRoman", Font.PLAIN , 24));
+        getContentPane().add(rechercher, gbc);
         
         /**
          * Positionnement du bouton "Retour au MENU".
          */ 
-        gbc.gridx = 2;
-        gbc.gridy = 1; // on se positionne sur la ligne suivante
-        gbc.insets = new Insets(50, 0, 0, 30);
+        gbc.gridx = 1;
+        gbc.gridy = 3; // on se positionne sur la ligne suivante
+        gbc.insets = new Insets(10, 0, 0, 0);
         gbc.gridwidth = GridBagConstraints.REMAINDER; // le bouton est le dernier élément de la ligne
         
         JButton gotomenu = new JButton("Retour au Menu");
@@ -109,14 +163,14 @@ public class RechercheDocument extends JFrame implements Affichage {
          * Positionnement de la liste des documents.
          */ 
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 4;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.gridheight = 1;
         gbc.weightx = 1.;
         gbc.weighty = 1.;
         gbc.fill = GridBagConstraints.BOTH;
         gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(40, 0, 20, 0);
+        gbc.insets = new Insets(30, 0, 20, 0);
         
         text = new JTextArea(Affichage.afficherDocument(biblio.getDocuments()));
         text.setFont(new Font("TimesRoman", Font.PLAIN , 24));
@@ -132,70 +186,15 @@ public class RechercheDocument extends JFrame implements Affichage {
          * Positionnement des credits.
          */ 
         gbc.gridx = 0;
-        gbc.gridy = 3;
+        gbc.gridy = 5;
         gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(10, 0, 0, 20);
+        gbc.insets = new Insets(10, 0, 0, 30);
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         JLabel credits = new JLabel("Credits : Kilian Poulin & Edouard Ok - (2018)");
         credits.setHorizontalAlignment(JLabel.CENTER);
         credits.setFont(new Font("TimesRoman", Font.PLAIN , 20));
         getContentPane().add(credits, gbc);
         
-        sortTitre.addActionListener(new ActionListener()
-        {
-                @Override
-                public void actionPerformed(ActionEvent e)
-                { 
-                    biblio.sortTitre();
-                    final String jTextAreaText = Affichage.afficherDocument(biblio.getDocuments());
-                    SwingUtilities.invokeLater(new Runnable()
-                    {
-                        @Override
-                        public void run()
-                        {
-                            text.setText(jTextAreaText);
-                        }            
-                    });
-                }
-        }
-        );
-        
-        sortAuteur.addActionListener(new ActionListener()
-        {
-                @Override
-                public void actionPerformed(ActionEvent e)
-                { 
-                    biblio.sortAuteur();
-                    final String jTextAreaText = Affichage.afficherDocument(biblio.getDocuments());
-                    SwingUtilities.invokeLater(new Runnable()
-                    {
-                        @Override
-                        public void run()
-                        {
-                            text.setText(jTextAreaText);
-                        }            
-                    });
-                }
-        }
-        );
-       
-        gotomenu.addActionListener(new ActionListener()
-        {
-                @Override
-                public void actionPerformed(ActionEvent e)
-                { 
-                    SwingUtilities.invokeLater(new Runnable()
-                    {
-                        @Override
-                        public void run()
-                        {
-                            dispose();
-                            Fenetre frame = new Fenetre();
-                        }            
-                    });
-                }
-        }
-        );
         
         return getContentPane();
     }

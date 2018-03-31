@@ -35,7 +35,7 @@ public class SaisieDocument extends JFrame {
             /**
              * Positionnement du itre de la page "Saisie d'un document".
              */
-            gbc.gridx = 1;
+            gbc.gridx = 0;
             gbc.gridy = 0; // on commence à la position (0,0)
             gbc.anchor = GridBagConstraints.NORTH; // on commence au début de la ligne
             gbc.gridheight = 1; // le titre ne s'étend que sur une ligne
