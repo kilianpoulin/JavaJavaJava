@@ -12,9 +12,13 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import model.Bibliotheque;
+import model.Livre;
 
 public class SaisieDocument extends JFrame {
-    public SaisieDocument(){
+    private Bibliotheque biblio = null;
+    public SaisieDocument(Bibliotheque biblio){
+        this.biblio = biblio;
         build();
     }
     public void build(){
@@ -274,7 +278,26 @@ public class SaisieDocument extends JFrame {
            credits.setHorizontalAlignment(JLabel.CENTER);
            credits.setFont(new Font("TimesRoman", Font.PLAIN , 20));
            getContentPane().add(credits, gbc);
-            
+        
+        valider.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    if(!textTitre.getText().equals("") 
+                            && !textAuteur.getText().equals("") 
+                            && !textPages.getText().equals("")) {
+                        Livre livre = new Livre(textTitre.getText(), textAuteur.getText(), 
+                                Integer.parseInt(textPages.getText()));
+                        biblio.addDocument(livre);
+                        dispose();
+                        AfficherDocuments afficher = new AfficherDocuments(biblio);
+                    }
+                            
+                    
+                }
+        }
+        );
            
         gotomenu.addActionListener(new ActionListener()
         {
@@ -294,23 +317,8 @@ public class SaisieDocument extends JFrame {
         }
         );
         
-        gotomenu.addActionListener(new ActionListener()
-        {
-                @Override
-                public void actionPerformed(ActionEvent e)
-                { 
-                    /*if(textTitre.getText() == "")
-                        /// titre vide
-                    if(textAuteur.getText() == "")*/
-                        // auteur vide
-                   // if(textnbPages.getText() == "")
-                        //
-                }
-        }
-        );
-
-            pack();
-            return getContentPane();
+        
+        return getContentPane();
     }	
     
 }

@@ -59,7 +59,7 @@ public class Fenetre extends JFrame {
                 public void actionPerformed(ActionEvent e)
                 { 
                     dispose();
-                    SaisieDocument saisir = new SaisieDocument();
+                    SaisieDocument saisir = new SaisieDocument(biblio);
                 }
         }
         );
