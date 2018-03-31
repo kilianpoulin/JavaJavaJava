@@ -36,12 +36,15 @@ public class TestDocuments {
 		};
                 
                 //SaisieDocument frame = new SaisieDocument();
-                Fenetre frame = new Fenetre();
-               
-                // on ajoute les documents dans la bibliothèque        
                 for(int i = 0; i < documents.length; i++){
                     biblio.addDocument(documents[i]);
                 }
+                Fenetre frame = new Fenetre();
+               
+                // on ajoute les documents dans la bibliothèque        
+                /* for(int i = 0; i < documents.length; i++){
+                    biblio.addDocument(documents[i]);
+                }*/
                 
                 // on lit dans un fichier
                // ReadDocument file = new ReadDocument("bibliotheque.csv");
