@@ -133,7 +133,7 @@ public class RechercheDocument extends JFrame implements Affichage {
         getContentPane().add(textAuteur, gbc);
         
          /**
-         * Positionnement du bouton "Trier par TITRE".
+         * Positionnement du bouton "Rechercher".
          */        
         gbc.gridx = 0;
         gbc.gridy = 3; // on se positionne sur la ligne suivante
@@ -144,7 +144,7 @@ public class RechercheDocument extends JFrame implements Affichage {
         gbc.fill = GridBagConstraints.NONE;    
         gbc.anchor = GridBagConstraints.BASELINE_LEADING;
         gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(10, 30, 0, 30);
+        gbc.insets = new Insets(0, 30, 0, 30);
         
         JButton rechercher = new JButton("Rechercher");
         rechercher.setFont(new Font("TimesRoman", Font.PLAIN , 24));
@@ -155,7 +155,7 @@ public class RechercheDocument extends JFrame implements Affichage {
          */ 
         gbc.gridx = 1;
         gbc.gridy = 3; // on se positionne sur la ligne suivante
-        gbc.insets = new Insets(10, 0, 0, 0);
+        gbc.insets = new Insets(0, 0, 0, 0);
         gbc.gridwidth = GridBagConstraints.REMAINDER; // le bouton est le dernier élément de la ligne
         
         JButton gotomenu = new JButton("Retour au Menu");
@@ -208,12 +208,9 @@ public class RechercheDocument extends JFrame implements Affichage {
                     if(!(textTitre.getText().equals(""))){
                         recherche = biblio_tmp.rechercheTitre(textTitre.getText());
                         biblio_tmp = new Bibliotheque(recherche);
-                        System.out.println("TITRE == > "+Affichage.afficherDocument(recherche));
                     }
                     if(!(textAuteur.getText().equals(""))){
                         recherche = biblio_tmp.rechercheAuteur(textAuteur.getText());
-                        
-                        System.out.println("\n\n AUTEUR ==> "+Affichage.afficherDocument(recherche));
                     }
                    // if(prixlitt.getText() == "")
                         //
@@ -235,12 +232,8 @@ public class RechercheDocument extends JFrame implements Affichage {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
-                    /*if(textTitre.getText() == "")
-                        /// titre vide
-                    if(textAuteur.getText() == "")*/
-                        // auteur vide
-                   // if(textnbPages.getText() == "")
-                        //
+                    dispose();
+                    Fenetre frame = new Fenetre();
                 }
         }
         );
