@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import model.Bibliotheque;
 import model.ReadDocument;
 
@@ -57,6 +58,7 @@ public class Fenetre extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
+                    dispose();
                     SaisieDocument saisir = new SaisieDocument();
                 }
         }
@@ -67,7 +69,8 @@ public class Fenetre extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
-                    //RechercheDocument saisir = new RechercheDocument();
+                    dispose();
+                    RechercheDocument recherche = new RechercheDocument(biblio);
                 }
         }
         );
@@ -77,7 +80,8 @@ public class Fenetre extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
-                    AfficherDocuments saisir = new AfficherDocuments(biblio);
+                    dispose();
+                    AfficherDocuments afficher = new AfficherDocuments(biblio);
                 }
         }
         );

@@ -25,16 +25,16 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.DefaultCaret;
 import model.Bibliotheque;
 
-public class AfficherDocuments extends JFrame implements Affichage {
+public class RechercheDocument extends JFrame implements Affichage {
     private Bibliotheque biblio = null;
     private static JTextArea text; 
-    public AfficherDocuments(Bibliotheque biblio){
+    public RechercheDocument(Bibliotheque biblio){
         this.biblio = biblio;
         build();
     }
     
     public void build(){
-        setTitle("Recherche de documents");
+        setTitle("Affichage de la bibliotheque");
         setMinimumSize(new Dimension(800, 600));
         setPreferredSize(new Dimension(800, 600));
         setContentPane(buildContentPane());
