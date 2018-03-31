@@ -12,6 +12,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,12 +26,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.text.DefaultCaret;
 import model.Bibliotheque;
+import model.Document;
 
 public class RechercheDocument extends JFrame implements Affichage {
     private Bibliotheque biblio = null;
+    private Bibliotheque biblio_tmp = null;
+    List<Document> recherche = null;
     private static JTextArea text; 
     public RechercheDocument(Bibliotheque biblio){
         this.biblio = biblio;
+        this.biblio_tmp = biblio;
         build();
     }
     
@@ -141,7 +146,7 @@ public class RechercheDocument extends JFrame implements Affichage {
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(10, 30, 0, 30);
         
-        JButton rechercher = new JButton("Trier par Titre");
+        JButton rechercher = new JButton("Rechercher");
         rechercher.setFont(new Font("TimesRoman", Font.PLAIN , 24));
         getContentPane().add(rechercher, gbc);
         
@@ -172,7 +177,7 @@ public class RechercheDocument extends JFrame implements Affichage {
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(30, 0, 20, 0);
         
-        text = new JTextArea(Affichage.afficherDocument(biblio.getDocuments()));
+        text = new JTextArea();
         text.setFont(new Font("TimesRoman", Font.PLAIN , 24));
         JScrollPane scrollpane = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                                         JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -195,6 +200,50 @@ public class RechercheDocument extends JFrame implements Affichage {
         credits.setFont(new Font("TimesRoman", Font.PLAIN , 20));
         getContentPane().add(credits, gbc);
         
+        rechercher.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    if(!(textTitre.getText().equals(""))){
+                        recherche = biblio_tmp.rechercheTitre(textTitre.getText());
+                        biblio_tmp = new Bibliotheque(recherche);
+                        System.out.println("TITRE == > "+Affichage.afficherDocument(recherche));
+                    }
+                    if(!(textAuteur.getText().equals(""))){
+                        recherche = biblio_tmp.rechercheAuteur(textAuteur.getText());
+                        
+                        System.out.println("\n\n AUTEUR ==> "+Affichage.afficherDocument(recherche));
+                    }
+                   // if(prixlitt.getText() == "")
+                        //
+                    final String jTextAreaText = Affichage.afficherDocument(recherche);
+                    SwingUtilities.invokeLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            text.setText(jTextAreaText);
+                        }            
+                    });
+                }
+        }
+        );
+        
+        gotomenu.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    /*if(textTitre.getText() == "")
+                        /// titre vide
+                    if(textAuteur.getText() == "")*/
+                        // auteur vide
+                   // if(textnbPages.getText() == "")
+                        //
+                }
+        }
+        );
         
         return getContentPane();
     }

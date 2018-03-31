@@ -114,15 +114,25 @@ public class Bibliotheque {
             }
         }
         
-        public void rechercheTitre(String titre){
+        public List<Document> rechercheTitre(String titre){
             List<Document> listDoc = new ArrayList<Document>();
             for(Document document : documents){
                 if(document.getTitre().contains(titre))
                     listDoc.add(document);
             }
-            for(Document doc : listDoc){
-                System.out.println(doc);
+            return listDoc;
+        }
+        
+        public List<Document> rechercheAuteur(String auteur){
+            List<Document> listDoc = new ArrayList<Document>();
+            for(Document document : documents){
+                if(document instanceof Livre){
+                    Livre livre = (Livre) document;
+                    if(livre.getAuteur().contains(auteur))
+                    listDoc.add(document);
+                }
             }
+            return listDoc;
         }
         
         /**
