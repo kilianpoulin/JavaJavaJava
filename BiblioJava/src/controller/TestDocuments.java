@@ -44,9 +44,9 @@ public class TestDocuments {
                 }
                 
                 // on lit dans un fichier
-                ReadDocument file = new ReadDocument("bibliotheque.csv");
+               // ReadDocument file = new ReadDocument("bibliotheque.csv");
                 
-                Bibliotheque biblio2 = new Bibliotheque(file.getDocuments());
+              //  Bibliotheque biblio2 = new Bibliotheque(file.getDocuments());
                 
                 
                 System.out.println("Bienvenue dans la plus grande bibliothèque au monde !\n");
@@ -81,7 +81,7 @@ public class TestDocuments {
                         }
                         break;
                     case 3 :
-                        System.out.println(biblio2);
+                        //System.out.println(biblio2);
                         break;     
                 }
                 
