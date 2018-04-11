@@ -214,7 +214,8 @@ public class RechercheDocument extends JFrame implements Affichage {
                         recherche = biblio_tmp.rechercheAuteur(textAuteur.getText());
                     }
                    // if(prixlitt.getText() == "")
-                        //*
+                        //**
+                    // bug fixed
                     biblio_tmp = biblio;
                     final String jTextAreaText = Affichage.afficherDocument(recherche);
                     SwingUtilities.invokeLater(new Runnable()
