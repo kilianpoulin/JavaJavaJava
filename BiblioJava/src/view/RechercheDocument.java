@@ -33,6 +33,7 @@ public class RechercheDocument extends JFrame implements Affichage {
     private Bibliotheque biblio_tmp = null;
     List<Document> recherche = null;
     private static JTextArea text; 
+    
     public RechercheDocument(Bibliotheque biblio){
         this.biblio = biblio;
         this.biblio_tmp = biblio;
@@ -213,7 +214,8 @@ public class RechercheDocument extends JFrame implements Affichage {
                         recherche = biblio_tmp.rechercheAuteur(textAuteur.getText());
                     }
                    // if(prixlitt.getText() == "")
-                        //
+                        //*
+                    biblio_tmp = biblio;
                     final String jTextAreaText = Affichage.afficherDocument(recherche);
                     SwingUtilities.invokeLater(new Runnable()
                     {
