@@ -39,6 +39,8 @@ public class TestDocuments {
                 for(int i = 0; i < documents.length; i++){
                     biblio.addDocument(documents[i]);
                 }
+                
+                biblio.exporter();
                 Fenetre frame = new Fenetre();
                
                 // on ajoute les documents dans la bibliothèque        
@@ -60,7 +62,6 @@ public class TestDocuments {
                 System.out.println("Choix : ");
                 choix = sc.nextInt();
                 
-                biblio.exporter();
                 switch(choix){
                     case 1 :
                         System.out.println("Saisir un titre : ");

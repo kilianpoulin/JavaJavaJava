@@ -175,59 +175,32 @@ public class SaisieDocument extends JFrame {
             gbc.gridheight = 1; 
             gbc.insets = new Insets(0, 50, 10, 10);
             
-            final JRadioButton bGoncourt = new JRadioButton();
+            final JRadioButton bGoncourt = new JRadioButton("Goncourt");
+            bGoncourt.setFont(new Font("TimesRoman", Font.PLAIN , 24));       
             getContentPane().add(bGoncourt, gbc);
-            
-             /**
-            *   Positionnement du label : "Prix GONCOURT".
-            */
-            gbc.gridx = 2; 
-            gbc.gridy = 4;
-            gbc.fill = GridBagConstraints.NONE;
-            gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
-            gbc.gridheight = 1; 
-            gbc.insets = new Insets(0, 10, 10, 10);
-            
-            JLabel lGoncourt = new JLabel("Goncourt");
-            lGoncourt.setFont(new Font("TimesRoman", Font.PLAIN , 22)); 
-            getContentPane().add(lGoncourt, gbc);
-            
+             
             /**
             *   Positionnement du choix : "Prix MEDICIS".
-            */
-            gbc.gridx = 3;
-            gbc.weightx = 1.;
-            gbc.gridwidth = GridBagConstraints.RELATIVE;
-            gbc.anchor = GridBagConstraints.BASELINE_TRAILING; 
-            gbc.insets = new Insets(0, 10, 0, 0);
-            
-            final JRadioButton bMedicis = new JRadioButton();
+            */         
+            gbc.gridx = 2; 
+            gbc.gridy = 4;
+            gbc.anchor = GridBagConstraints.BASELINE;
+            gbc.gridheight = 1; 
+            gbc.insets = new Insets(0, 50, 10, 10);
+            final JRadioButton bMedicis = new JRadioButton("Medicis");
+            bMedicis.setFont(new Font("TimesRoman", Font.PLAIN , 24));       
             getContentPane().add(bMedicis, gbc);
             
             /**
-             * Positionnement du label : "Prix MEDICIS".
-            */
-            gbc.gridx = 4; 
-            gbc.weightx = 1.;
-            gbc.fill = GridBagConstraints.NONE;
-            gbc.anchor = GridBagConstraints.BASELINE; 
-            gbc.gridheight = 1; 
-            gbc.insets = new Insets(0, 10, 10, 10);
-            
-            JLabel lMedicis = new JLabel("Medicis");
-            lMedicis.setFont(new Font("TimesRoman", Font.PLAIN , 22)); 
-            getContentPane().add(lMedicis, gbc);
-            
-            /**
             *   Positionnement du choix : "Prix AUTRES".
-            */
-            gbc.gridx = 5;
-            gbc.gridwidth = GridBagConstraints.REMAINDER;
-            gbc.weightx = 1.;
-            gbc.anchor = GridBagConstraints.BASELINE_TRAILING; 
-            gbc.insets = new Insets(0, 10, 0, 50);
-            
-            final JRadioButton bAutres = new JRadioButton();
+            */            
+            gbc.gridx = 3; 
+            gbc.gridy = 4;
+            gbc.gridwidth = GridBagConstraints.REMAINDER; 
+            gbc.gridheight = 1; 
+            gbc.insets = new Insets(0, 50, 10, 10);
+            final JRadioButton bAutres = new JRadioButton("Autres");
+            bAutres.setFont(new Font("TimesRoman", Font.PLAIN , 24));       
             getContentPane().add(bAutres, gbc);
             
             /**
@@ -254,7 +227,7 @@ public class SaisieDocument extends JFrame {
             gbc.gridy = 5;
             gbc.gridwidth = GridBagConstraints.REMAINDER; 
             gbc.gridheight = 1; 
-            gbc.fill = GridBagConstraints.HORIZONTAL;
+            //gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.anchor = GridBagConstraints.BASELINE;
             gbc.insets = new Insets(0, 15, 0, 10);
             
