@@ -29,14 +29,14 @@ import model.Bibliotheque;
 import model.Document;
 
 public class RechercheDocument extends JFrame implements Affichage {
-    private Bibliotheque biblio = null;
     private Bibliotheque biblio_tmp = null;
     List<Document> recherche = null;
+    private Fenetre main = null;
     private static JTextArea text; 
     
-    public RechercheDocument(Bibliotheque biblio){
-        this.biblio = biblio;
-        this.biblio_tmp = biblio;
+    public RechercheDocument(Fenetre frame){
+        this.main = frame;
+        this.biblio_tmp = main.biblio;
         build();
     }
     
@@ -47,7 +47,7 @@ public class RechercheDocument extends JFrame implements Affichage {
         setContentPane(buildContentPane());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        setVisible(true);
+        setVisible(false);
     }
     
     public Container buildContentPane(){
@@ -216,7 +216,7 @@ public class RechercheDocument extends JFrame implements Affichage {
                    // if(prixlitt.getText() == "")
                         //** test
                     // bug fixed
-                    biblio_tmp = biblio;
+                    biblio_tmp = main.biblio;
                     final String jTextAreaText = Affichage.afficherDocument(recherche);
                     SwingUtilities.invokeLater(new Runnable()
                     {
@@ -235,8 +235,8 @@ public class RechercheDocument extends JFrame implements Affichage {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
-                    dispose();
-                    Fenetre frame = new Fenetre();
+                    setVisible(false);
+                    main.setVisible(true);
                 }
         }
         );

@@ -16,10 +16,11 @@ import model.Bibliotheque;
 import model.Livre;
 
 public class SaisieDocument extends JFrame {
-    private Bibliotheque biblio = null;
-    public SaisieDocument(Bibliotheque biblio){
-        this.biblio = biblio;
+
+    private Fenetre main = null;
+    public SaisieDocument(Fenetre frame){
         build();
+        this.main = frame;
     }
     public void build(){
         setTitle("Saisie d'un document");
@@ -28,7 +29,7 @@ public class SaisieDocument extends JFrame {
         setContentPane(buildContentPane());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        setVisible(true);
+        setVisible(false);
     }
     
     Container buildContentPane()
@@ -54,10 +55,29 @@ public class SaisieDocument extends JFrame {
             getContentPane().add(titre, gbc);
             
             /**
+            * Positionnement du choix du type de document à ajouter
+            */
+            String[] typeList = {"Livre", "Roman", "Revue", "Manuel" };
+            gbc.gridx = 0;
+            gbc.gridy = 1;
+            gbc.gridwidth = 1;
+            gbc.gridheight = 1;
+            gbc.weightx = 0.;
+            gbc.weighty = 1.;
+            gbc.gridwidth = GridBagConstraints.REMAINDER;
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            gbc.anchor = GridBagConstraints.BASELINE_LEADING; 
+            gbc.insets = new Insets(10, 50, 0, 0);
+            
+            JComboBox type = new JComboBox(typeList);
+            type.setFont(new Font("TimesRoman", Font.PLAIN , 24));
+            getContentPane().add(type, gbc);
+            
+            /**
             * Positionnement du label du champ de saisie "Titre du document".
             */
             gbc.gridx = 0;
-            gbc.gridy = 1;
+            gbc.gridy = 2;
             gbc.gridwidth = 1;
             gbc.gridheight = 1;
             gbc.weightx = 0.;
@@ -75,7 +95,7 @@ public class SaisieDocument extends JFrame {
             * Positionnement du champ de saisie "Titre du document".
             */
             gbc.gridx = 1; 
-            gbc.gridy = 1;
+            gbc.gridy = 2;
             gbc.gridwidth = GridBagConstraints.REMAINDER; 
             gbc.gridheight = 1; 
             gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -90,7 +110,7 @@ public class SaisieDocument extends JFrame {
             * Positionnement du label du champ de saisie "Nom de l'auteur".
             */
             gbc.gridx = 0;
-            gbc.gridy = 2;
+            gbc.gridy = 3;
             gbc.gridwidth = 1;
             gbc.gridheight = 1;
             gbc.weightx = 0.;
@@ -106,7 +126,7 @@ public class SaisieDocument extends JFrame {
             * Positionnement du champ de saisie "Nom de l'auteur".
             */
             gbc.gridx = 1; 
-            gbc.gridy = 2;
+            gbc.gridy = 3;
             gbc.gridwidth = GridBagConstraints.REMAINDER; 
             gbc.gridheight = 1; 
             gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -121,7 +141,7 @@ public class SaisieDocument extends JFrame {
             *   Positionnement du champ de saisie "Nombre de pages".
             */
             gbc.gridx = 0;
-            gbc.gridy = 3;
+            gbc.gridy = 4;
             gbc.gridwidth = 1;
             gbc.gridheight = 1;
             gbc.weightx = 0.;
@@ -138,7 +158,7 @@ public class SaisieDocument extends JFrame {
             * Positionnement du champ de saisie "Nombre de pages".
             */
             gbc.gridx = 1; 
-            gbc.gridy = 3;
+            gbc.gridy = 4;
             gbc.gridwidth = GridBagConstraints.REMAINDER; 
             gbc.gridheight = 1; 
             gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -153,7 +173,7 @@ public class SaisieDocument extends JFrame {
             *   Positionnement du label prix littéraires.
             */
             gbc.gridx = 0;
-            gbc.gridy = 4;
+            gbc.gridy = 5;
             gbc.gridwidth = 1;
             gbc.gridheight = 1;
             gbc.weightx = 0.;
@@ -169,7 +189,7 @@ public class SaisieDocument extends JFrame {
             *   Positionnement du choix : "Prix GONCOURT".
             */
             gbc.gridx = 1; 
-            gbc.gridy = 4;
+            gbc.gridy = 5;
             gbc.fill = GridBagConstraints.NONE;
             gbc.anchor = GridBagConstraints.BASELINE;
             gbc.gridheight = 1; 
@@ -183,7 +203,7 @@ public class SaisieDocument extends JFrame {
             *   Positionnement du choix : "Prix MEDICIS".
             */         
             gbc.gridx = 2; 
-            gbc.gridy = 4;
+            gbc.gridy = 5;
             gbc.anchor = GridBagConstraints.BASELINE;
             gbc.gridheight = 1; 
             gbc.insets = new Insets(0, 50, 10, 10);
@@ -195,7 +215,7 @@ public class SaisieDocument extends JFrame {
             *   Positionnement du choix : "Prix AUTRES".
             */            
             gbc.gridx = 3; 
-            gbc.gridy = 4;
+            gbc.gridy = 5;
             gbc.gridwidth = GridBagConstraints.REMAINDER; 
             gbc.gridheight = 1; 
             gbc.insets = new Insets(0, 50, 10, 10);
@@ -207,7 +227,7 @@ public class SaisieDocument extends JFrame {
             *   Positionnement du bouton "Valider".
             */
             gbc.gridx = 0;
-            gbc.gridy = 5;
+            gbc.gridy = 6;
             gbc.gridwidth = 1;
             gbc.gridheight = 1;
             gbc.weightx = 0.;
@@ -224,7 +244,7 @@ public class SaisieDocument extends JFrame {
             *   Positionnement du bouton "Retour au MENU".
             */
             gbc.gridx = 1; 
-            gbc.gridy = 5;
+            gbc.gridy = 6;
             gbc.gridwidth = GridBagConstraints.REMAINDER; 
             gbc.gridheight = 1; 
             //gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -241,7 +261,7 @@ public class SaisieDocument extends JFrame {
             * Positionnement des credits.
             */ 
            gbc.gridx = 0;
-           gbc.gridy = 6;
+           gbc.gridy = 7;
            gbc.anchor = GridBagConstraints.LINE_START;
            gbc.insets = new Insets(10, 0, 0, 20);
            gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -262,9 +282,9 @@ public class SaisieDocument extends JFrame {
                             && !textPages.getText().equals("")) {
                         Livre livre = new Livre(textTitre.getText(), textAuteur.getText(), 
                                 Integer.parseInt(textPages.getText()));
-                        biblio.addDocument(livre);
-                        dispose();
-                        AfficherDocuments afficher = new AfficherDocuments(biblio);
+                        main.biblio.addDocument(livre);
+                        setVisible(false);
+                        main.frame_afficher.setVisible(true);
                     }
                             
                     
@@ -282,8 +302,8 @@ public class SaisieDocument extends JFrame {
                         @Override
                         public void run()
                         {
-                            dispose();
-                            Fenetre frame = new Fenetre();
+                            setVisible(false);
+                            main.setVisible(true);
                         }            
                     });
                 }

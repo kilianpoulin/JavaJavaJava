@@ -51,8 +51,8 @@ public class TestDocuments {
                 // on lit dans un fichier
                // ReadDocument file = new ReadDocument("bibliotheque.csv");
                 
-              //  Bibliotheque biblio2 = new Bibliotheque(file.getDocuments());
-                
+             //   Bibliotheque biblio2 = new Bibliotheque(file.getDocuments());
+        /*        
                 
                 System.out.println("Bienvenue dans la plus grande bibliothèque au monde !\n");
                 System.out.println("[1] Rechercher un document par titre\n");
@@ -94,9 +94,9 @@ public class TestDocuments {
            
                 
                 
-                /*System.out.println("bibliotheque : "+biblio);
+                System.out.println("bibliotheque : "+biblio);
                 
-                biblio.sortTitre();
+               /* biblio.sortTitre();
                 
                 System.out.println("bibliotheque : "+biblio);*/
 		

@@ -9,8 +9,8 @@ import java.util.List;
 public class ReadDocument {
     
     private List<Document> documents = new ArrayList<Document>();;
-    private static String line;
-    private static String[] attr;
+    private String line;
+    private String[] attr = new String[9];
     private final String fileName;
     public ReadDocument(String fileName){
         this.fileName = fileName;
@@ -58,6 +58,7 @@ public class ReadDocument {
     
     public Document readLivre(){
         Livre doc = new Livre(attr[1], attr[2], Integer.parseInt(attr[3]));
+        doc.setNumEnreg(Integer.parseInt(attr[0]));
         return doc;
     }
     public Document readManuel(){

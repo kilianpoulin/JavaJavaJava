@@ -26,10 +26,12 @@ import javax.swing.text.DefaultCaret;
 import model.Bibliotheque;
 
 public class AfficherDocuments extends JFrame implements Affichage {
-    private Bibliotheque biblio = null;
+    //private Bibliotheque biblio = null;
     private static JTextArea text; 
-    public AfficherDocuments(Bibliotheque biblio){
-        this.biblio = biblio;
+    private Fenetre main = null;
+    
+    public AfficherDocuments(Fenetre frame){
+        this.main = frame;
         build();
     }
     
@@ -40,7 +42,7 @@ public class AfficherDocuments extends JFrame implements Affichage {
         setContentPane(buildContentPane());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        setVisible(true);
+        setVisible(false);
     }
     
     public Container buildContentPane(){
@@ -118,7 +120,7 @@ public class AfficherDocuments extends JFrame implements Affichage {
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(40, 0, 20, 0);
         
-        text = new JTextArea(Affichage.afficherDocument(biblio.getDocuments()));
+        text = new JTextArea(Affichage.afficherDocument(main.biblio.getDocuments()));
         text.setFont(new Font("TimesRoman", Font.PLAIN , 24));
         JScrollPane scrollpane = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                                         JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -146,8 +148,8 @@ public class AfficherDocuments extends JFrame implements Affichage {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
-                    biblio.sortTitre();
-                    final String jTextAreaText = Affichage.afficherDocument(biblio.getDocuments());
+                    main.biblio.sortTitre();
+                    final String jTextAreaText = Affichage.afficherDocument(main.biblio.getDocuments());
                     SwingUtilities.invokeLater(new Runnable()
                     {
                         @Override
@@ -165,8 +167,8 @@ public class AfficherDocuments extends JFrame implements Affichage {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
-                    biblio.sortAuteur();
-                    final String jTextAreaText = Affichage.afficherDocument(biblio.getDocuments());
+                    main.biblio.sortAuteur();
+                    final String jTextAreaText = Affichage.afficherDocument(main.biblio.getDocuments());
                     SwingUtilities.invokeLater(new Runnable()
                     {
                         @Override
@@ -189,8 +191,8 @@ public class AfficherDocuments extends JFrame implements Affichage {
                         @Override
                         public void run()
                         {
-                            dispose();
-                            Fenetre frame = new Fenetre();
+                            setVisible(false);
+                            main.setVisible(true);
                         }            
                     });
                 }

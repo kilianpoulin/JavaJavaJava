@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
-import view.TriDocuments;
 
 public class Bibliotheque {
 
@@ -23,6 +22,7 @@ public class Bibliotheque {
 	 * Constructeur d'une bibliotheque dont la liste de documents est vide.
 	 */
 	public Bibliotheque() {
+            Document.Nb_Enreg = 0;
                 //this.documents = Collections.<Document>emptyList();
                 this.documents = new ArrayList<Document>();
                 //throw new RuntimeException("Bibliotheque() not yet implemented"); 

@@ -14,11 +14,22 @@ import model.Bibliotheque;
 import model.ReadDocument;
 
 public class Fenetre extends JFrame {
-    private Bibliotheque biblio = null;
+    public static Bibliotheque biblio = null;
+    AfficherDocuments frame_afficher = null;
+    RechercheDocument frame_recherche = null;
+    SaisieDocument frame_saisie = null;
+    
     public Fenetre(){
         build();
         ReadDocument file = new ReadDocument("bibliotheque.csv");
         biblio = new Bibliotheque(file.getDocuments());
+        frame_afficher = new AfficherDocuments(this);
+        frame_recherche = new RechercheDocument(this);
+        frame_saisie = new SaisieDocument(this);
+        
+        frame_afficher.setVisible(false);
+        frame_recherche.setVisible(false);
+        frame_saisie.setVisible(false);
     }
     
     public void build(){
@@ -58,8 +69,8 @@ public class Fenetre extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
-                    dispose();
-                    SaisieDocument saisir = new SaisieDocument(biblio);
+                    setVisible(false);
+                    frame_saisie.setVisible(true);
                 }
         }
         );
@@ -69,8 +80,8 @@ public class Fenetre extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
-                    dispose();
-                    RechercheDocument recherche = new RechercheDocument(biblio);
+                    setVisible(false);
+                    frame_recherche.setVisible(true);
                 }
         }
         );
@@ -80,8 +91,8 @@ public class Fenetre extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 { 
-                    dispose();
-                    AfficherDocuments afficher = new AfficherDocuments(biblio);
+                    setVisible(false);
+                    frame_afficher.setVisible(true);
                 }
         }
         );

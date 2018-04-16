@@ -3,7 +3,7 @@ package model;
 // TO DO ...
 public abstract class Document {
 	
-    static int Nb_Enreg = 0;
+    public static int Nb_Enreg = 0;
     private int numEnreg;
     private String titre;
 
