@@ -19,29 +19,24 @@ public class Livre extends Document implements InterfaceAuteur {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
-        
+        if(this.getNumEnreg() < 9)
+            builder.append("  ");
+        if(this.getNumEnreg() < 99)
+            builder.append(" ");
         builder.append(this.getNumEnreg());
-        builder.append(" - ");
-        builder.append("Livre");
-        builder.append(" - ");
+        builder.append("      [Livre]");
+        builder.append("      ");
+        builder.append('"');
+        builder.append(' ');
         builder.append(this.getTitre());
-        builder.append(", ");
+        builder.append(' ');
+        builder.append('"');
+        builder.append(",   ");
         builder.append(this.auteur);
-        builder.append(" - (");
+        builder.append("    (");
         builder.append(this.nbPages);
         builder.append(" pages)");
         builder.append("\n");
-        /*
-        builder.append("\n");
-        builder.append("Ce livre de titre ");
-        builder.append(this.getTitre());
-        builder.append(" a été écrit par ");
-        builder.append(this.getAuteur());
-        builder.append("\n");
-        builder.append("Il comporte ");
-        builder.append(this.getNbPages());
-        builder.append(" pages.");
-        builder.append("\n");*/
         
         return builder.toString();
     }

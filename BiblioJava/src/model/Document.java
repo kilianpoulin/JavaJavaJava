@@ -21,10 +21,13 @@ public abstract class Document {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
-        
+        if(this.getNumEnreg() < 9)
+            builder.append("  ");
+        if(this.getNumEnreg() < 99)
+            builder.append(" ");
         builder.append(this.getNumEnreg());
         builder.append(" - ");
-        builder.append("Document");
+        builder.append("[Document]");
         builder.append(" - ");
         builder.append(this.titre);
         builder.append("\n");

@@ -38,6 +38,42 @@ public class Bibliotheque {
 	public List<Document> getDocuments() {
 		return documents;
 	}
+        
+        public List<Document> getLivres() {
+            List<Document> tmp = new ArrayList();
+            for(Document document : documents){
+                if((document instanceof Livre) && (document instanceof Roman) == false && (document instanceof Manuel) == false)
+                    tmp.add(document);
+            }
+            return tmp;
+	}
+        
+        public List<Document> getRomans() {
+            List<Document> tmp = new ArrayList();
+            for(Document document : documents){
+                if(document instanceof Roman)
+                    tmp.add(document);
+            }
+            return tmp;
+	}
+        
+        public List<Document> getManuels() {
+            List<Document> tmp = new ArrayList();
+            for(Document document : documents){
+                if(document instanceof Manuel)
+                    tmp.add(document);
+            }
+            return tmp;
+	}
+        
+        public List<Document> getRevues() {
+            List<Document> tmp = new ArrayList();
+            for(Document document : documents){
+                if(document instanceof Revue)
+                    tmp.add(document);
+            }
+            return tmp;
+	}
 
 	/**
 	 * Renvoie le i-ème document de la liste des documents, s'il existe, 

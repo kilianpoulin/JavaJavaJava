@@ -15,31 +15,25 @@ public class Manuel extends Livre {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
+        if(this.getNumEnreg() < 9)
+            builder.append("  ");
+        if(this.getNumEnreg() < 99)
+            builder.append(" ");
         builder.append(this.getNumEnreg());
-        builder.append(" - ");
-        builder.append("Manuel");
-        builder.append(" - ");
+        builder.append("   [Manuel]");
+        builder.append("      ");
+        builder.append('"');
+        builder.append(' ');
         builder.append(this.getTitre());
-        builder.append(", ");
+        builder.append(' ');
+        builder.append('"');
+        builder.append(",   ");
         builder.append(this.getAuteur());
-        builder.append(" - (");
+        builder.append("    (");
         builder.append(this.getNbPages());
-        builder.append(" pages) - Niveau ");
+        builder.append(" pages)    Niveau ");
         builder.append(this.niveau);
         builder.append("\n");
-        /*builder.append("\n");
-        builder.append("Ce manuel de titre ");
-        builder.append(this.getTitre());
-        builder.append(" a été écrit par ");
-        builder.append(this.getAuteur());
-        builder.append("\n");
-        builder.append("Il est destiné au niveau");
-        builder.append(this.niveau);
-        builder.append(". \n");
-        builder.append("Il comporte ");
-        builder.append(this.getNbPages());
-        builder.append(" pages.");
-        builder.append("\n");*/
         
         return builder.toString();
     }

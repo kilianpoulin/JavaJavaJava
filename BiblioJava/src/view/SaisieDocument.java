@@ -16,6 +16,7 @@ import model.Bibliotheque;
 import model.Livre;
 import model.Manuel;
 import model.Revue;
+import model.Roman;
 
 public class SaisieDocument extends JFrame {
 
@@ -36,12 +37,12 @@ public class SaisieDocument extends JFrame {
     private final JLabel labelMois = new JLabel("Mois : ");
     private final JLabel labelAnnee = new JLabel("Annee : ");
     
-    private final JButton valider = new JButton("Valider");
+    public final JButton valider = new JButton("Valider");
     private final JButton gotomenu = new JButton("Retour au Menu");
     private final JButton Btype = new JButton("Changer");
     
     private final JRadioButton bMedicis = new JRadioButton("Medicis");
-    private final JRadioButton bAutres = new JRadioButton("Autres");
+    private final JRadioButton bRenaudot = new JRadioButton("Renaudot");
     private final JRadioButton bGoncourt = new JRadioButton("Goncourt");
     private final JTextField textTitre = new JTextField();
     private final JTextField textAuteur = new JTextField();
@@ -150,9 +151,24 @@ public class SaisieDocument extends JFrame {
                                     if(!textTitre.getText().equals("") 
                                             && !textAuteur.getText().equals("") 
                                             && !textPages.getText().equals("")) {
-                                        Livre livre = new Livre(textTitre.getText(), textAuteur.getText(), 
+                                        Roman roman = null;
+                                        if(bGoncourt.isSelected()){
+                                            roman = new Roman(textTitre.getText(), textAuteur.getText(), 
+                                                Integer.parseInt(textPages.getText()), Roman.GONCOURT);
+                                        }
+                                        else if(bMedicis.isSelected()){
+                                            roman = new Roman(textTitre.getText(), textAuteur.getText(), 
+                                                Integer.parseInt(textPages.getText()), Roman.GONCOURT);
+                                        }
+                                        else if(bRenaudot.isSelected()){
+                                            roman = new Roman(textTitre.getText(), textAuteur.getText(), 
+                                                Integer.parseInt(textPages.getText()), Roman.RENAUDOT);
+                                        }
+                                        else{
+                                            roman = new Roman(textTitre.getText(), textAuteur.getText(), 
                                                 Integer.parseInt(textPages.getText()));
-                                        main.biblio.addDocument(livre);
+                                        }
+                                        main.biblio.addDocument(roman);
                                         setVisible(false);
                                         main.frame_afficher.setVisible(true);
                                     }
@@ -310,7 +326,7 @@ public class SaisieDocument extends JFrame {
             getContentPane().add(bMedicis, gbc);
             
             /**
-            *   Positionnement du choix : "Prix AUTRES".
+            *   Positionnement du choix : "Prix RENAUDOT".
             */            
             gbc.gridx = 3; 
             gbc.gridy = 5;
@@ -318,8 +334,46 @@ public class SaisieDocument extends JFrame {
             gbc.gridheight = 1; 
             gbc.insets = new Insets(0, 50, 10, 10);
             
-            bAutres.setFont(new Font("TimesRoman", Font.PLAIN , 24));       
-            getContentPane().add(bAutres, gbc);
+            bRenaudot.setFont(new Font("TimesRoman", Font.PLAIN , 24));       
+            getContentPane().add(bRenaudot, gbc);
+            
+            
+            bGoncourt.addActionListener(new ActionListener()
+            {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    { 
+                        if(bGoncourt.isSelected()){
+                            bMedicis.setSelected(false);
+                            bRenaudot.setSelected(false);
+                        }
+                    }
+            }
+            );
+            bMedicis.addActionListener(new ActionListener()
+            {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    { 
+                        if(bMedicis.isSelected()){
+                            bGoncourt.setSelected(false);
+                            bRenaudot.setSelected(false);
+                        }
+                    }
+            }
+            );
+            bRenaudot.addActionListener(new ActionListener()
+            {
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    { 
+                        if(bRenaudot.isSelected()){
+                            bGoncourt.setSelected(false);
+                            bMedicis.setSelected(false);
+                        }
+                    }
+            }
+            );
     }
     
     void footerContentPane(GridBagConstraints gbc){
@@ -339,6 +393,8 @@ public class SaisieDocument extends JFrame {
             gbc.insets = new Insets(0, 15, 0, 0);
             
             valider.setFont(new Font("TimesRoman", Font.BOLD , 24));
+            valider.setBackground(Color.BLACK);
+            valider.setForeground(Color.WHITE);
             getContentPane().add(valider, gbc);
             
             /**
@@ -533,6 +589,7 @@ public class SaisieDocument extends JFrame {
             gbc.weightx = 0.;
             gbc.weighty = 1.;
             gbc.fill = GridBagConstraints.NONE;
+            gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.anchor = GridBagConstraints.BASELINE_LEADING; 
             gbc.insets = new Insets(0, 40, 0, 0);
             
@@ -570,7 +627,7 @@ public class SaisieDocument extends JFrame {
         
         getContentPane().remove(bMedicis);
         getContentPane().remove(bGoncourt);
-        getContentPane().remove(bAutres);
+        getContentPane().remove(bRenaudot);
         
         getContentPane().remove(textTitre);
         getContentPane().remove(textAuteur);

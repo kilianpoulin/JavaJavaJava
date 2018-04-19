@@ -15,26 +15,23 @@ public class Revue extends Document {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
-        
+        if(this.getNumEnreg() < 9)
+            builder.append("  ");
+        if(this.getNumEnreg() < 99)
+            builder.append(" ");
         builder.append(this.getNumEnreg());
-        builder.append(" - ");
-        builder.append("Revue");
-        builder.append(" - ");
+        builder.append("    [Revue]");
+        builder.append("      ");
+        builder.append('"');
+        builder.append(' ');
         builder.append(this.getTitre());
-        builder.append(", ");
+        builder.append(' ');
+        builder.append('"');
+        builder.append(",   ");
         builder.append(this.mois);
         builder.append("/");
         builder.append(this.annee);
         builder.append("\n");
-        /*builder.append("\n");
-        builder.append("Le titre de cette revue est ");
-        builder.append(this.getTitre());
-        builder.append("\n");
-        builder.append("Elle a été publiée en ");
-        builder.append(this.mois);
-        builder.append("/");
-        builder.append(this.annee);
-        builder.append(".\n");*/
         
         return builder.toString();
     }

@@ -27,8 +27,20 @@ import model.Bibliotheque;
 
 public class AfficherDocuments extends JFrame implements Affichage {
     //private Bibliotheque biblio = null;
-    private static JTextArea text; 
+    public static JTextArea text; 
     private Fenetre main = null;
+    
+    private final JLabel titre = new JLabel("Bibliothèque complète");
+
+    
+    public final JButton sortTitre = new JButton("Trier par Titre");       
+    private final JButton sortAuteur = new JButton("Trier par Auteur");
+    private final JButton exporter = new JButton("Exporter");
+    private final JButton gotomenu = new JButton("Menu");
+    private final JButton sortLivre = new JButton("Livres");
+    private final JButton sortRevue = new JButton("Revues");
+    private final JButton sortRoman = new JButton("Romans");
+    private final JButton sortManuel = new JButton("Manuels");
     
     public AfficherDocuments(Fenetre frame){
         this.main = frame;
@@ -58,7 +70,6 @@ public class AfficherDocuments extends JFrame implements Affichage {
         gbc.insets = new Insets(30, 15, 0, 100); 
         gbc.gridwidth = GridBagConstraints.REMAINDER; // le titre est le dernier élément de la ligne
         
-        JLabel titre = new JLabel("Bibliothèque complète");
         titre.setHorizontalAlignment(JLabel.CENTER);
         titre.setFont(new Font("TimesRoman", Font.PLAIN , 32));
         getContentPane().add(titre, gbc);
@@ -78,7 +89,7 @@ public class AfficherDocuments extends JFrame implements Affichage {
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(50, 30, 0, 30);
         
-        JButton sortTitre = new JButton("Trier par Titre");
+        
         sortTitre.setFont(new Font("TimesRoman", Font.PLAIN , 24));
         getContentPane().add(sortTitre, gbc);
         
@@ -88,30 +99,92 @@ public class AfficherDocuments extends JFrame implements Affichage {
         gbc.gridx = 1;
         gbc.gridy = 1; // on se positionne sur la ligne suivante
         gbc.insets = new Insets(50, 0, 0, 30);
-        
-        JButton sortAuteur = new JButton("Trier par Auteur");
+
         sortAuteur.setFont(new Font("TimesRoman", Font.PLAIN , 24));
         getContentPane().add(sortAuteur, gbc);
+       
+        /**
+         * Positionnement du bouton "Exporter".
+         */     
+        gbc.gridx = 2;
+        gbc.gridy = 1; // on se positionne sur la ligne suivante
+        gbc.insets = new Insets(50, 0, 0, 30);
+
+        exporter.setFont(new Font("TimesRoman", Font.PLAIN , 24));
+        exporter.setBackground(Color.BLUE);
+        exporter.setForeground(Color.WHITE);
+        getContentPane().add(exporter, gbc);
         
         /**
          * Positionnement du bouton "Retour au MENU".
          */ 
-        gbc.gridx = 2;
+        gbc.gridx = 3;
         gbc.gridy = 1; // on se positionne sur la ligne suivante
         gbc.insets = new Insets(50, 0, 0, 30);
         gbc.gridwidth = GridBagConstraints.REMAINDER; // le bouton est le dernier élément de la ligne
         
-        JButton gotomenu = new JButton("Retour au Menu");
         gotomenu.setFont(new Font("TimesRoman", Font.ITALIC , 24));
         gotomenu.setBackground(Color.RED);
         gotomenu.setForeground(Color.WHITE);
         getContentPane().add(gotomenu, gbc);
         
         /**
+         * Positionnement du bouton "Trier par LIVRE".
+         */        
+        gbc.gridx = 0;
+        gbc.gridy = 2; // on se positionne sur la ligne suivante
+        gbc.gridwidth = 1;
+        gbc.gridheight = 1;
+        gbc.weightx = 0.;
+        gbc.weighty = 0.;
+        gbc.fill = GridBagConstraints.NONE;    
+        gbc.anchor = GridBagConstraints.BASELINE_LEADING;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(50, 30, 0, 10);
+        
+        sortLivre.setFont(new Font("TimesRoman", Font.PLAIN , 20));
+        getContentPane().add(sortLivre, gbc);
+        
+        /**
+         * Positionnement du bouton "Trier par ROMAN".
+         */     
+        gbc.gridx = 1;
+        gbc.gridy = 2; // on se positionne sur la ligne suivante
+        gbc.insets = new Insets(50, 0, 0, 10);
+        
+        
+        sortRoman.setFont(new Font("TimesRoman", Font.PLAIN , 20));
+        getContentPane().add(sortRoman, gbc);
+        
+        /**
+         * Positionnement du bouton "Trier par MANUEL".
+         */     
+        gbc.gridx = 2;
+        gbc.gridy = 2; // on se positionne sur la ligne suivante
+        gbc.insets = new Insets(50, 0, 0, 10);
+        
+        sortManuel.setFont(new Font("TimesRoman", Font.PLAIN , 20));
+        getContentPane().add(sortManuel, gbc);
+        
+        /**
+         * Positionnement du bouton "Trier par REVUE".
+         */     
+        gbc.gridx = 3;
+        gbc.gridy = 2; // on se positionne sur la ligne suivante
+        gbc.gridwidth = GridBagConstraints.REMAINDER; // le bouton est le dernier élément de la ligne
+        gbc.insets = new Insets(50, 50, 0, 10);
+        
+        
+        sortRevue.setFont(new Font("TimesRoman", Font.PLAIN , 20));
+        getContentPane().add(sortRevue, gbc);
+       
+        
+        
+        /**
          * Positionnement de la liste des documents.
          */ 
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.gridheight = 1;
         gbc.weightx = 1.;
@@ -121,9 +194,10 @@ public class AfficherDocuments extends JFrame implements Affichage {
         gbc.insets = new Insets(40, 0, 20, 0);
         
         text = new JTextArea(Affichage.afficherDocument(main.biblio.getDocuments()));
-        text.setFont(new Font("TimesRoman", Font.PLAIN , 24));
+        text.setFont(new Font("TimesRoman", Font.PLAIN , 21));
         JScrollPane scrollpane = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                                         JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollpane.setPreferredSize(new Dimension(500,200));
         text.setBorder(BorderFactory.createEmptyBorder(10, 15, 15, 10));
        
         JScrollBar bar = scrollpane.getVerticalScrollBar();
@@ -134,7 +208,7 @@ public class AfficherDocuments extends JFrame implements Affichage {
          * Positionnement des credits.
          */ 
         gbc.gridx = 0;
-        gbc.gridy = 3;
+        gbc.gridy = 4;
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(10, 0, 0, 20);
         gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -180,6 +254,110 @@ public class AfficherDocuments extends JFrame implements Affichage {
                 }
         }
         );
+        
+        sortRevue.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    final String jTextAreaText = Affichage.afficherDocument(main.biblio.getRevues());
+                    SwingUtilities.invokeLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            text.setText(jTextAreaText);
+                        }            
+                    });
+                }
+        }
+        );
+        
+        sortLivre.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    final String jTextAreaText = Affichage.afficherDocument(main.biblio.getLivres());
+                    SwingUtilities.invokeLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            text.setText(jTextAreaText);
+                        }            
+                    });
+                }
+        }
+        );
+        
+        sortRoman.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    final String jTextAreaText = Affichage.afficherDocument(main.biblio.getRomans());
+                    SwingUtilities.invokeLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            text.setText(jTextAreaText);
+                        }            
+                    });
+                }
+        }
+        );
+        
+        
+        sortManuel.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    final String jTextAreaText = Affichage.afficherDocument(main.biblio.getManuels());
+                    SwingUtilities.invokeLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            text.setText(jTextAreaText);
+                        }            
+                    });
+                }
+        }
+        );
+        
+        exporter.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    main.biblio.exporter();
+                }
+        }
+        );
+        
+        
+        
+        sortManuel.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    final String jTextAreaText = Affichage.afficherDocument(main.biblio.getManuels());
+                    SwingUtilities.invokeLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            text.setText(jTextAreaText);
+                        }            
+                    });
+                }
+        }
+        );
+        
        
         gotomenu.addActionListener(new ActionListener()
         {

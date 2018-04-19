@@ -71,6 +71,8 @@ public class ReadDocument {
                 Prix = Roman.GONCOURT;
             else if(attr[4].compareTo("MEDICIS") == 1)
                 Prix = Roman.MEDICIS;
+            else if(attr[4].compareTo("RENAUDOT") == 1)
+                Prix = Roman.RENAUDOT;
                             
             Roman doc = new Roman(attr[1], attr[2], Integer.parseInt(attr[3]), Prix);
         return doc;
