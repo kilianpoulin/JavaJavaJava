@@ -21,8 +21,8 @@ import view.Fenetre;
  */
 public class TestDocuments {
 
-	/**
-	 * Programme de test.
+    /**
+	 * Programme principal contenant le programme console ainsi que le programme en mode graphique (swing)
      * @param args
      * @throws java.io.FileNotFoundException
 	 */

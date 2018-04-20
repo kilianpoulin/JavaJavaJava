@@ -1,5 +1,6 @@
 package view;
 
+import model.ReadDocument;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -24,7 +25,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import model.Bibliotheque;
 import model.Document;
-import model.ReadDocument;
 
 /**
  *   Cette classe (qui créer une fenêtre) importe une bibliothèque étant stockée dans un fichier CSV sur le PC de l'utilisateur.

@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import model.Bibliotheque;
-import model.ReadDocument;
 
 /**
  *  Fenêtre principale du programme, toutes les autres fenêtres sont reliées à celel-ci.
