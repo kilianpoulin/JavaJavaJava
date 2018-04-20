@@ -259,7 +259,7 @@ public class Bibliotheque {
         }
         
         /**
-	 * Sauvegarde la bibliothèque dans un fichier CSV.
+	 * Sauvegarde la bibliothèque dans un fichier CSV nommé "bibliotheque.csv" à la racine du projet.
 	 */
         public void exporter() {
             PrintWriter file ;

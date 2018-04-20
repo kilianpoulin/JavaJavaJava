@@ -1,6 +1,5 @@
 package model;
 
-// TO DO ...
 
 /**
  *  Cette classe contient tous les élements caractérisant un Livre, y compris son affichage.
