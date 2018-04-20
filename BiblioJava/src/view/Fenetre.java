@@ -14,14 +14,16 @@ import model.Bibliotheque;
 import model.ReadDocument;
 
 /**
- *
+ *  Fenêtre principale du programme, toutes les autres fenêtres sont reliées à celel-ci.
+ *  Cette fenêtre représente le menu avec ses différentes options : 
+ *      - Ajouter un document
+ *      - Importer une bibliothèque
+ *      - Rechercher/supprimer un document
+ *      - Afficher/trier la bibliothèque.
  * @author Kilian
  */
 public class Fenetre extends JFrame {
 
-    /**
-     *
-     */
     public static Bibliotheque biblio = null;
     AfficherDocuments frame_afficher = null;
     RechercheDocument frame_recherche = null;
@@ -29,12 +31,16 @@ public class Fenetre extends JFrame {
     ImportBiblio frame_importer = null;
     
     /**
-     *
+     *  Ce constructeur créer 4 fenêtres annexes et les relie à elle-même :
+     *      - Fenêtre "Afficher Documents"
+     *      - Fenêtre "Recherche Documents"
+     *      - Fenêtre "Saisie Documents"
+     *      - Fenêtre "Importer une bibliothèque".
+     * 
+     *  Ces fenêtres sont initialisées comme n'étant pas visible.
      */
     public Fenetre(){
         build();
-        //ReadDocument file = new ReadDocument("bibliotheque.csv");
-        //biblio = new Bibliotheque(file.getDocuments());
         biblio = new Bibliotheque();
         biblio.loadDefaultBiblio(); // on charge une biblio par défaut
         
@@ -50,7 +56,7 @@ public class Fenetre extends JFrame {
     }
     
     /**
-     *
+     *  Construit les éléments basiques de la fenêtre.
      */
     public void build(){
         setTitle("Menu de la bibliotheque");
@@ -63,8 +69,9 @@ public class Fenetre extends JFrame {
     }
     
     /**
-     *
-     * @return
+     *  Construit la structure interne de la fenêtre (place tous les élements).
+     * @return 
+     *      le contenu de la fenêtre.
      */
     public Container buildContentPane(){
         getContentPane().setLayout(new GridLayout(5, 1));

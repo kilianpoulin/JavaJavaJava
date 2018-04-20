@@ -26,16 +26,20 @@ import javax.swing.text.DefaultCaret;
 import model.Bibliotheque;
 
 /**
- *
+ *  Cette classe forme la fenêtre permettant d'afficher la bibliothèque ainsi que de la trier.
+ *  La bibliothèque peut-être triée sous 6 formes différentes : 
+ *      - par titre
+ *      - par auteur
+ *      - en affichant que les LIVRES
+ *      - en affichant que les ROMANS
+ *      - en affichant que les MANUELS
+ *      - en affichant que les REVUES
+ *      
  * @author Kilian
  */
 public class AfficherDocuments extends JFrame implements Affichage {
-    //private Bibliotheque biblio = null;
- 
-    /**
-     *
-     */
-        public static JTextArea text; 
+
+    public static JTextArea text; 
     private Fenetre main = null;
     
     private final JLabel titre = new JLabel("Bibliothèque complète");
@@ -51,8 +55,9 @@ public class AfficherDocuments extends JFrame implements Affichage {
     private final JButton sortManuel = new JButton("Manuels");
     
     /**
-     *
+     *  Ce constructeur lie la fenêtre à la fenêtre principale (MENU) de la classe Fenetre.
      * @param frame
+     *      La fenêtre principale (le menu).
      */
     public AfficherDocuments(Fenetre frame){
         this.main = frame;
@@ -60,7 +65,7 @@ public class AfficherDocuments extends JFrame implements Affichage {
     }
     
     /**
-     *
+     *  Construit les éléments basiques de la fenêtre.
      */
     public void build(){
         setTitle("Recherche de documents");
@@ -73,8 +78,9 @@ public class AfficherDocuments extends JFrame implements Affichage {
     }
     
     /**
-     *
-     * @return
+     *  Construit la structure interne de la fenêtre (place tous les élements).
+     * @return 
+     *      le contenu de la fenêtre.
      */
     public Container buildContentPane(){
         getContentPane().setLayout(new GridBagLayout());

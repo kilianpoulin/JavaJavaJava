@@ -19,7 +19,13 @@ import model.Revue;
 import model.Roman;
 
 /**
- *
+ *  Cette classe (qui est une fenêtre) permet d'ajouter plusieurs types de documents au choix :
+ *      - Livre
+ *      - Roman
+ *      - Manuel
+ *      - Revue
+ * 
+ *  Si l'utilisateur ajoute un document alors le résultat sera affiché dans la fenêtre de classe AfficherDocuments.
  * @author Kilian
  */
 public class SaisieDocument extends JFrame {
@@ -41,9 +47,6 @@ public class SaisieDocument extends JFrame {
     private final JLabel labelMois = new JLabel("Mois : ");
     private final JLabel labelAnnee = new JLabel("Annee : ");
     
-    /**
-     *
-     */
     public final JButton valider = new JButton("Valider");
     private final JButton gotomenu = new JButton("Retour au Menu");
     private final JButton Btype = new JButton("Changer");
@@ -60,8 +63,9 @@ public class SaisieDocument extends JFrame {
     private final JComboBox annee = new JComboBox(anneeList);
     
     /**
-     *
+     *      Constructeur permettant de lier la fenêtre à la fenêtre principale.
      * @param frame
+     *      La fenêtre principale (le menu).
      */
     public SaisieDocument(Fenetre frame){
         build();
@@ -69,7 +73,7 @@ public class SaisieDocument extends JFrame {
     }
 
     /**
-     *
+     *  Construit les éléments basiques de la fenêtre.
      */
     public void build(){
         setTitle("Saisie d'un document");
@@ -81,6 +85,12 @@ public class SaisieDocument extends JFrame {
         setVisible(false);
     }
     
+    
+    /**
+     *  Construit la structure interne de la fenêtre (place tous les élements).
+     * @return 
+     *      le contenu de la fenêtre.
+     */
     Container buildContentPane()
     {	
         
@@ -96,6 +106,11 @@ public class SaisieDocument extends JFrame {
         return getContentPane();
     }	
     
+    /**
+     *      Affiche le choix de type de document à ajouter et gère les différents champ à afficher en conséquence.
+     *  @param gbc
+     *      Contraintes de placement dans la fenêtre.
+     */
     void choiceContentPane(GridBagConstraints gbc){
             /**
             * Positionnement du choix du type de document à ajouter.
@@ -256,6 +271,12 @@ public class SaisieDocument extends JFrame {
         }
         );
     }
+    
+     /**
+     *      Affiche l'en-tête de la fenêtre (titre)
+     *  @param gbc
+     *      Contraintes de placement dans la fenêtre.
+     */
     void headerContentPane(GridBagConstraints gbc){
             /**
              * Positionnement du itre de la page "Saisie d'un document".
@@ -274,6 +295,11 @@ public class SaisieDocument extends JFrame {
             getContentPane().add(titre, gbc);
     }
     
+    /**
+     *      Affiche les champs nécessaire pour l'ajout d'un document
+     *  @param gbc
+     *      Contraintes de placement dans la fenêtre.
+     */
     void documentContentPane(GridBagConstraints gbc){
             /**
             * Positionnement du label du champ de saisie "Titre du document".
@@ -306,6 +332,11 @@ public class SaisieDocument extends JFrame {
             textTitre.setFont(new Font("TimesRoman", Font.PLAIN, 24)); 
             getContentPane().add(textTitre, gbc);
     }
+     /**
+     *      Affiche les champs nécessaire pour l'ajout d'un roman
+     *  @param gbc
+     *      Contraintes de placement dans la fenêtre.
+     */
     void romanContentPane(GridBagConstraints gbc){
        /**
             *   Positionnement du label prix littéraires.
@@ -398,7 +429,11 @@ public class SaisieDocument extends JFrame {
             }
             );
     }
-    
+    /**
+     *      Affiche le bas de page dans la fenêtre
+     *  @param gbc
+     *      Contraintes de placement dans la fenêtre.
+     */
     void footerContentPane(GridBagConstraints gbc){
         
           /**
@@ -473,6 +508,11 @@ public class SaisieDocument extends JFrame {
         
     }
     
+     /**
+     *      Affiche les champs nécessaire pour l'ajout d'un livre
+     *  @param gbc
+     *      Contraintes de placement dans la fenêtre.
+     */
     void livreContentPane(GridBagConstraints gbc){
             
             /**
@@ -538,6 +578,12 @@ public class SaisieDocument extends JFrame {
 
     }
     
+     /**
+     *      Affiche les champs nécessaire pour l'ajout d'un manuel
+     *  @param gbc
+     *      Contraintes de placement dans la fenêtre.
+     */
+    
     void manuelContentPane(GridBagConstraints gbc){
         /**
             *   Positionnement du champ de saisie "Niveau".
@@ -571,6 +617,11 @@ public class SaisieDocument extends JFrame {
       
   }
     
+    /**
+     *      Affiche les champs nécessaire pour l'ajout d'une revue
+     *  @param gbc
+     *      Contraintes de placement dans la fenêtre.
+     */
     void revueContentPane(GridBagConstraints gbc){
         /**
             *   Positionnement du champ de saisie "Mois".
@@ -634,6 +685,12 @@ public class SaisieDocument extends JFrame {
             getContentPane().add(annee, gbc);
       
   }
+    
+    /**
+     *      Supprime tous les composants en cas de changement de type de document à ajouter.
+     *  @param gbc
+     *      Contraintes de placement dans la fenêtre.
+     */
     void removeComponents(){
         //getContentPane().remove(titre);
         getContentPane().remove(labelPrix);

@@ -27,7 +27,9 @@ import model.Document;
 import model.ReadDocument;
 
 /**
- *
+ *   Cette classe (qui créer une fenêtre) importe une bibliothèque étant stockée dans un fichier CSV sur le PC de l'utilisateur.
+ *  
+ *  Si l'utilisateur importe un fichier correct alors le résultat sera affiché dans la fenêtre de classe AfficherDocuments.
  * @author Kilian
  */
 public class ImportBiblio extends JFrame {
@@ -37,8 +39,9 @@ public class ImportBiblio extends JFrame {
     private final String filename = "";
     
     /**
-     *
+     *    Constructeur permettant de lier la fenêtre à la fenêtre principale.
      * @param frame
+     *      La fenêtre principale (le menu).
      */
     public ImportBiblio(Fenetre frame){
         this.main = frame;
@@ -46,7 +49,7 @@ public class ImportBiblio extends JFrame {
     }
     
     /**
-     *
+     *  Construit les éléments basiques de la fenêtre.
      */
     public void build(){
         setTitle("Importer une bibliotheque");
@@ -59,8 +62,9 @@ public class ImportBiblio extends JFrame {
     }
     
     /**
-     *
-     * @return
+     *  Construit la structure interne de la fenêtre (place tous les élements).
+     * @return 
+     *      le contenu de la fenêtre.
      */
     public Container buildContentPane(){
         getContentPane().setLayout(new GridBagLayout());

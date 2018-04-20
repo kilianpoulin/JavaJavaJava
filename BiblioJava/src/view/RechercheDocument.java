@@ -29,7 +29,13 @@ import model.Bibliotheque;
 import model.Document;
 
 /**
- *
+ *    Cette classe (qui est une fenêtre) permet à la fois de rechercher un document selon pusieurs critères :
+ *          - Titre
+ *          - Auteur
+ *    Mais aussi de supprimer les élements trouvés de la bibliothèque.
+ * 
+ *   Si l'utilisateur choisi l'option de supression alors le résultat sera affiché dans la fenêtre de classe AfficherDocuments.
+ *      
  * @author Kilian
  */
 public class RechercheDocument extends JFrame implements Affichage {
@@ -39,8 +45,9 @@ public class RechercheDocument extends JFrame implements Affichage {
     private static JTextArea text; 
     
     /**
-     *
+     *      Constructeur permettant de lier la fenêtre à la fenêtre principale.
      * @param frame
+     *      La fenêtre principale (le menu).
      */
     public RechercheDocument(Fenetre frame){
         this.main = frame;
@@ -49,7 +56,7 @@ public class RechercheDocument extends JFrame implements Affichage {
     }
     
     /**
-     *
+     *  Construit les éléments basiques de la fenêtre.
      */
     public void build(){
         setTitle("Rechercher des documents");
@@ -62,8 +69,9 @@ public class RechercheDocument extends JFrame implements Affichage {
     }
     
     /**
-     *
-     * @return
+     *  Construit la structure interne de la fenêtre (place tous les élements).
+     * @return 
+     *      le contenu de la fenêtre.
      */
     public Container buildContentPane(){
         getContentPane().setLayout(new GridBagLayout());
