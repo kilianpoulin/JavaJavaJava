@@ -3,7 +3,8 @@ package model;
 // TO DO ...
 
 /**
- *
+ *  Cette classe contient tous les élements caractérisant un Manuel, y compris son affichage.
+ *  Sa classe mère est LIVRE.
  * @author Kilian
  */
 public class Manuel extends Livre {
@@ -15,6 +16,7 @@ public class Manuel extends Livre {
      * @param titre
      * @param auteur
      * @param niveau
+     *      Niveau du manuel sous forme d'entier
      * @param nbPages
      */
     public Manuel(String titre, String auteur, int niveau, int nbPages){
@@ -51,21 +53,21 @@ public class Manuel extends Livre {
     }
 
     /**
-     *
+     *  Récupère le niveau sous forme d'entier
      * @return
+     *       niveau sous forme d'entier (ex : 2)
      */
     public int getNiveau() {
         return niveau;
     }
 
     /**
-     *
+     *  Setter du niveau (entier)
      * @param niveau
+     *      Entier (ex : 2).
      */
     public void setNiveau(int niveau) {
         this.niveau = niveau;
-    }
-        
-       
+    } 
 
 }

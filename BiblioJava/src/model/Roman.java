@@ -1,9 +1,8 @@
 package model;
 
-// TO DO ...
-
 /**
- *
+ *  Cette classe contient tous les élements caractérisant un Roman, y compris son affichage.
+ *  Sa classe mère est LIVRE.
  * @author Kilian
  */
 public class Roman extends Livre {
@@ -11,17 +10,17 @@ public class Roman extends Livre {
     private Roman prixLitteraire = null;
 
     /**
-     *
+     *  Variable désignant le prix GONCOURT.
      */
     public static Roman GONCOURT = new Roman();
 
     /**
-     *
+     * Variable désignant le prix MEDICIS.
      */
     public static Roman MEDICIS = new Roman();
 
     /**
-     *
+     * Variable désignant le prix RENAUDOT.
      */
     public static Roman RENAUDOT = new Roman();
     
@@ -47,6 +46,7 @@ public class Roman extends Livre {
      * @param auteur
      * @param nbPages
      * @param prixLitt
+     *      Prix littéraire reçu (est de type Roman, correspond à une variable static).
     */
     public Roman(String titre, String auteur, int nbPages, Roman prixLitt){
         super(titre, auteur, nbPages);
@@ -54,7 +54,7 @@ public class Roman extends Livre {
     }
 
     /**
-     *
+     *  Getter du prix littéraire (correspond à une variable static de type Roman).
      * @return
      */
     public Roman getPrixLitteraire() {
@@ -62,8 +62,9 @@ public class Roman extends Livre {
     }
     
     /**
-     *
+     *  Affichage du prix Littéraire non plus comme un élément de type Roman mais comme un String.
      * @return
+     *      une chaine de caractère (vide si le roman n'a pas reçu de prix littéraire).
      */
     public String getPrixLitt(){
         if(this.prixLitteraire == GONCOURT)
@@ -77,8 +78,9 @@ public class Roman extends Livre {
     }
 
     /**
-     *
+     *  Setter du prix littéraire.
      * @param prixLitteraire
+     *      De type roman (correspond à une variable static)
      */
     public void setPrixLitteraire(Roman prixLitteraire) {
         this.prixLitteraire = prixLitteraire;

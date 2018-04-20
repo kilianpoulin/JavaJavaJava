@@ -1,14 +1,10 @@
 package model;
 
 /**
- * Definit un document qui poss�de un auteur.
+ * Definit un document qui possède un auteur.
  */
 public interface InterfaceAuteur {
 
-    /**
-     *
-     * @return
-     */
     abstract public String getAuteur();
 	
 }

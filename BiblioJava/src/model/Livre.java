@@ -3,7 +3,9 @@ package model;
 // TO DO ...
 
 /**
- *
+ *  Cette classe contient tous les élements caractérisant un Livre, y compris son affichage.
+ *  Sa classe mère est DOCUMENT.
+ *  Elle a deux sous-classes (ROMAN et MANUEL)
  * @author Kilian
  */
 public class Livre extends Document implements InterfaceAuteur {
@@ -12,14 +14,14 @@ public class Livre extends Document implements InterfaceAuteur {
     private int nbPages;
 
     /**
-     *
+     *  Constructeur pour créer un Livre vide
      */
     public Livre(){
 
     }
 
     /**
-     *
+     *  Constructeur pour créer un livre avec tous ses paramètres
      * @param titre
      * @param auteur
      * @param nbPages
@@ -56,8 +58,9 @@ public class Livre extends Document implements InterfaceAuteur {
     }
 
     /**
-     *
+     *  
      * @return
+     *      Auteur (String)
      */
     public String getAuteur() {
         return auteur;
@@ -66,6 +69,7 @@ public class Livre extends Document implements InterfaceAuteur {
     /**
      *
      * @param auteur
+     *       Auteur (String)
      */
     public void setAuteur(String auteur) {
         this.auteur = auteur;
@@ -74,6 +78,7 @@ public class Livre extends Document implements InterfaceAuteur {
     /**
      *
      * @return
+     *       Le nombre de pages du livre (entier)
      */
     public int getNbPages() {
         return nbPages;
@@ -82,6 +87,7 @@ public class Livre extends Document implements InterfaceAuteur {
     /**
      *
      * @param nbPages
+     *       Le nombre de pages du livre (entier)
      */
     public void setNbPages(int nbPages) {
         this.nbPages = nbPages;

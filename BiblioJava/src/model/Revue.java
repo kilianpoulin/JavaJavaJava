@@ -1,9 +1,8 @@
 package model;
 
-// TO DO ...
-
 /**
- *
+ *  Cette classe contient tous les élements caractérisant une Revue, y compris son affichage.
+ *  Sa classe mère est DOCUMENT.
  * @author Kilian
  */
 public class Revue extends Document {
@@ -12,10 +11,12 @@ public class Revue extends Document {
     private int annee;
 
     /**
-     *
+     *  Constructeur permettant de créer une revue
      * @param titre
      * @param mois
+     *      Mois de parution (entier)
      * @param annee
+     *      Année de parution (entier)
      */
     public Revue(String titre, int mois, int annee){
         this.setTitre(titre);
@@ -50,14 +51,16 @@ public class Revue extends Document {
     /**
      *
      * @return
+     *      L'année de parution sous forme d'entier
      */
     public int getAnnee() {
         return annee;
     }
 
     /**
-     *
+     *      Setter de l'année de parution (entier)
      * @param annee
+     *      Année sous forme d'entier (ex : 2018)
      */
     public void setAnnee(int annee) {
         this.annee = annee;
@@ -66,14 +69,16 @@ public class Revue extends Document {
     /**
      *
      * @return
+     *      Le mois de parution sous forme d'entier
      */
     public int getMois() {
         return mois;
     }
 
     /**
-     *
+     *  Setter du mois de parution (entier)
      * @param mois
+     *      Mois sous forme d'entier (ex: 9).
      */
     public void setMois(int mois) {
         this.mois = mois;

@@ -6,13 +6,13 @@ import model.Revue;
 import model.Livre;
 
 /**
- *
+ * Interface de comparaison (titre et auteur) de manière optimisée.
  * @author Kilian
  */
 public interface TriDocuments {
 
     /**
-     *
+     *  Comparaison des titres des documents en utilisant la fonction de String compareTo().
      */
     static final Comparator<Document>TITRE = 
             new Comparator<Document>() {
@@ -26,7 +26,7 @@ public interface TriDocuments {
             };
     
     /**
-     *
+     * Comparaison des auteurs des documents la fonction de String compareTo().
      */
     static final Comparator<Document>AUTEUR = 
             new Comparator<Document>() {
