@@ -8,9 +8,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import model.Document;
+import model.Livre;
+import model.Manuel;
+import model.Revue;
+import model.Roman;
 
 /**
- *
+ *  Cette classe lit un document CSV et en extrait toutes les informations nécessaires pour créer la bibliothèque
  * @author Kilian
  */
 public class ReadDocument {
@@ -21,8 +26,9 @@ public class ReadDocument {
     private final String fileName;
 
     /**
-     *
+     *  Constructeur permettant de rechercher un document
      * @param fileName
+     *      String contenant le chemin absolu d'un fichier CSV
      */
     public ReadDocument(String fileName){
         this.fileName = fileName;
@@ -30,7 +36,7 @@ public class ReadDocument {
     } 
     
     /**
-     *
+     *  Construit la bibliothèque en extrayant les informations du fichier.
      */
     public void build(){
         BufferedReader file;
