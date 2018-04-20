@@ -156,7 +156,12 @@ public class Bibliotheque {
             Collections.sort(this.documents, TriDocuments.AUTEUR);
         }
         
-        public void recherchePrixLitt(Roman Prix){
+    /**
+     *
+     * @param Prix
+     * @return
+     */
+    public List<Document> recherchePrixLitt(Roman Prix){
             List<Document> listDoc = new ArrayList<Document>();
             for(Document document : documents){
                 if(document instanceof Roman){
@@ -165,9 +170,7 @@ public class Bibliotheque {
                         listDoc.add(document);
                 }
             }
-            for(Document doc : listDoc){
-                System.out.println(doc);
-            }
+            return listDoc;
         }
         
         public List<Document> rechercheTitre(String titre){
