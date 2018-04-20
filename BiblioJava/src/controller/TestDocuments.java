@@ -26,19 +26,6 @@ public class TestDocuments {
             int choix, prix;
             String titre;
 
-		Document[] documents = {
-			new Livre("L'archipel du Goulag", "Soljenitsyne", 250),
-			new Roman("Rouge Brésil", "Rufin", 120, Roman.GONCOURT),
-			new Revue("Le point", 03, 2014),
-			new Roman("Le mendiant", "Wiesel", 150, Roman.MEDICIS),
-			new Livre("La condition humaine", "Malraux", 130),
-			new Manuel("Manuel qualité ISO 9001", "AFNOR", -1, 3)
-		};
-                
-                //SaisieDocument frame = new SaisieDocument();
-                for(int i = 0; i < documents.length; i++){
-                    biblio.addDocument(documents[i]);
-                }
                 
                 biblio.exporter();
                 Fenetre frame = new Fenetre();

@@ -196,7 +196,7 @@ public class AfficherDocuments extends JFrame implements Affichage {
         text = new JTextArea(Affichage.afficherDocument(main.biblio.getDocuments()));
         text.setFont(new Font("TimesRoman", Font.PLAIN , 21));
         JScrollPane scrollpane = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-                                        JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                                        JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollpane.setPreferredSize(new Dimension(500,200));
         text.setBorder(BorderFactory.createEmptyBorder(10, 15, 15, 10));
        

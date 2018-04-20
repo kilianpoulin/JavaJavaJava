@@ -18,18 +18,24 @@ public class Fenetre extends JFrame {
     AfficherDocuments frame_afficher = null;
     RechercheDocument frame_recherche = null;
     SaisieDocument frame_saisie = null;
+    ImportBiblio frame_importer = null;
     
     public Fenetre(){
         build();
-        ReadDocument file = new ReadDocument("bibliotheque.csv");
-        biblio = new Bibliotheque(file.getDocuments());
+        //ReadDocument file = new ReadDocument("bibliotheque.csv");
+        //biblio = new Bibliotheque(file.getDocuments());
+        biblio = new Bibliotheque();
+        biblio.loadDefaultBiblio(); // on charge une biblio par défaut
+        
         frame_afficher = new AfficherDocuments(this);
         frame_recherche = new RechercheDocument(this);
         frame_saisie = new SaisieDocument(this);
+        frame_importer = new ImportBiblio(this);
         
         frame_afficher.setVisible(false);
         frame_recherche.setVisible(false);
         frame_saisie.setVisible(false);
+        frame_importer.setVisible(false);
     }
     
     public void build(){
@@ -43,7 +49,7 @@ public class Fenetre extends JFrame {
     }
     
     public Container buildContentPane(){
-        getContentPane().setLayout(new GridLayout(4, 1));
+        getContentPane().setLayout(new GridLayout(5, 1));
         
         JPanel pane = new JPanel(new BorderLayout());
         JLabel titre = new JLabel("Choisir parmi les options");
@@ -51,6 +57,9 @@ public class Fenetre extends JFrame {
         titre.setFont(new Font("TimesRoman", Font.PLAIN , 32));
         getContentPane().add(titre, BorderLayout.CENTER);
         
+        JButton importButton = new JButton("Importer une bibliothèque");
+        importButton.setFont(new Font("TimesRoman", Font.PLAIN , 26));
+        getContentPane().add(importButton);
         
         JButton addButton = new JButton("Ajouter un document");
         addButton.setFont(new Font("TimesRoman", Font.PLAIN , 26));
@@ -63,6 +72,17 @@ public class Fenetre extends JFrame {
         JButton showButton = new JButton("Afficher la bibliothèque");
         showButton.setFont(new Font("TimesRoman", Font.PLAIN , 26));
         getContentPane().add(showButton);
+        
+        importButton.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    setVisible(false);
+                    frame_importer.setVisible(true);
+                }
+        }
+        );
         
         addButton.addActionListener(new ActionListener()
         {

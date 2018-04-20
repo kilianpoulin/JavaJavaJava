@@ -41,7 +41,7 @@ public class RechercheDocument extends JFrame implements Affichage {
     }
     
     public void build(){
-        setTitle("Affichage de la bibliotheque");
+        setTitle("Rechercher des documents");
         setMinimumSize(new Dimension(800, 600));
         setPreferredSize(new Dimension(800, 600));
         setContentPane(buildContentPane());
@@ -63,7 +63,7 @@ public class RechercheDocument extends JFrame implements Affichage {
         gbc.insets = new Insets(30, 15, 0, 100); 
         gbc.gridwidth = GridBagConstraints.REMAINDER; // le titre est le dernier élément de la ligne
         
-        JLabel titre = new JLabel("Bibliothèque complète");
+        JLabel titre = new JLabel("Rechercher des documents");
         titre.setHorizontalAlignment(JLabel.CENTER);
         titre.setFont(new Font("TimesRoman", Font.PLAIN , 32));
         getContentPane().add(titre, gbc);
@@ -182,6 +182,7 @@ public class RechercheDocument extends JFrame implements Affichage {
         text.setFont(new Font("TimesRoman", Font.PLAIN , 24));
         JScrollPane scrollpane = new JScrollPane(text, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                                         JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollpane.setPreferredSize(new Dimension(500,200));
         text.setBorder(BorderFactory.createEmptyBorder(10, 15, 15, 10));
        
         JScrollBar bar = scrollpane.getVerticalScrollBar();
@@ -189,11 +190,32 @@ public class RechercheDocument extends JFrame implements Affichage {
         getContentPane().add(scrollpane, gbc);
         
         /**
+         * Positionnement du bouton "Supprimer ce(s) document(s)".
+         */  
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.gridheight = 1;
+        gbc.weightx = 1.;
+        gbc.weighty = 1.;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0, 0, 20, 0);
+        
+        JButton supprimer = new JButton("Supprimer ce(s) document(s)");
+        supprimer.setFont(new Font("TimesRoman", Font.PLAIN , 24));
+        supprimer.setBackground(Color.WHITE);
+        supprimer.setForeground(Color.BLACK);
+
+        getContentPane().add(supprimer, gbc);
+        
+        
+        /**
          * Positionnement des credits.
          */ 
         gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.gridy = 6;
+        gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(10, 0, 0, 30);
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         JLabel credits = new JLabel("Credits : Kilian Poulin & Edouard Ok - (2018)");
@@ -237,6 +259,20 @@ public class RechercheDocument extends JFrame implements Affichage {
                 { 
                     setVisible(false);
                     main.setVisible(true);
+                }
+        }
+        );
+        
+        supprimer.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    for(Document document : biblio_tmp.getDocuments()){
+                        main.biblio.removeDocument(document);
+                        setVisible(false);
+                        main.frame_afficher.setVisible(true);
+                    }
                 }
         }
         );

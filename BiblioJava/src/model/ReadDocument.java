@@ -2,7 +2,10 @@ package model;
 
 import java.io.FileReader ;
 import java.io.BufferedReader ;
+import java.io.File;
 import java.io.IOException ;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,10 @@ public class ReadDocument {
         int i = 0;
         try
         {
+            Path pathAbsolute = Paths.get(fileName);
+            Path pathBase = Paths.get(new File("src/pdfReader/TestFile.txt").getAbsolutePath());
+            Path pathRelative = pathBase.relativize(pathAbsolute);
+            System.out.println(pathRelative);
             file = new BufferedReader(new FileReader(fileName)) ;
             while (file.ready()==true) 
             {
@@ -67,11 +74,11 @@ public class ReadDocument {
     }
     public Document readRoman(){
         Roman Prix = null;
-            if(attr[4].compareTo("GONCOURT") == 1)
+            if(attr[4].compareTo("GONCOURT") == 0)
                 Prix = Roman.GONCOURT;
-            else if(attr[4].compareTo("MEDICIS") == 1)
+            else if(attr[4].compareTo("MEDICIS") == 0)
                 Prix = Roman.MEDICIS;
-            else if(attr[4].compareTo("RENAUDOT") == 1)
+            else if(attr[4].compareTo("RENAUDOT") == 0)
                 Prix = Roman.RENAUDOT;
                             
             Roman doc = new Roman(attr[1], attr[2], Integer.parseInt(attr[3]), Prix);

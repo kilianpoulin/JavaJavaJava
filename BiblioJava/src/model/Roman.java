@@ -69,7 +69,7 @@ public class Roman extends Livre {
         builder.append(this.getNbPages());
         builder.append(" pages)");
         if(this.prixLitteraire != null){
-            builder.append(" - ");
+            builder.append("     ==> a reçu le ");
             builder.append("Prix ");
             builder.append(this.getPrixLitt());
         }
