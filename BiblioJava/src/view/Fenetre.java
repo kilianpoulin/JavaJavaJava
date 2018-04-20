@@ -13,13 +13,24 @@ import java.awt.event.WindowEvent;
 import model.Bibliotheque;
 import model.ReadDocument;
 
+/**
+ *
+ * @author Kilian
+ */
 public class Fenetre extends JFrame {
+
+    /**
+     *
+     */
     public static Bibliotheque biblio = null;
     AfficherDocuments frame_afficher = null;
     RechercheDocument frame_recherche = null;
     SaisieDocument frame_saisie = null;
     ImportBiblio frame_importer = null;
     
+    /**
+     *
+     */
     public Fenetre(){
         build();
         //ReadDocument file = new ReadDocument("bibliotheque.csv");
@@ -38,6 +49,9 @@ public class Fenetre extends JFrame {
         frame_importer.setVisible(false);
     }
     
+    /**
+     *
+     */
     public void build(){
         setTitle("Menu de la bibliotheque");
         setMinimumSize(new Dimension(800, 600));
@@ -48,6 +62,10 @@ public class Fenetre extends JFrame {
         setVisible(true);
     }
     
+    /**
+     *
+     * @return
+     */
     public Container buildContentPane(){
         getContentPane().setLayout(new GridLayout(5, 1));
         

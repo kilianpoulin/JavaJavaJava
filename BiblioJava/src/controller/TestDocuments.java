@@ -15,10 +15,16 @@ import view.Affichage;
 import view.SaisieDocument;
 import view.Fenetre;
 
+/**
+ *
+ * @author Kilian
+ */
 public class TestDocuments {
 
 	/**
 	 * Programme de test.
+     * @param args
+     * @throws java.io.FileNotFoundException
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
             

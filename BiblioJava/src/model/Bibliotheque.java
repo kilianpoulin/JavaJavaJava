@@ -13,6 +13,10 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
 
+/**
+ *
+ * @author Kilian
+ */
 public class Bibliotheque {
 
 	// Liste des documents de la bibliotheque
@@ -28,18 +32,27 @@ public class Bibliotheque {
                 //throw new RuntimeException("Bibliotheque() not yet implemented"); 
 	}
 	
-        public Bibliotheque(List<Document> documents){
+    /**
+     *
+     * @param documents
+     */
+    public Bibliotheque(List<Document> documents){
             this.documents = documents;
         }
         
 	/**
 	 * Renvoie la liste des documents de la bibliotheque.
+     * @return 
 	 */
 	public List<Document> getDocuments() {
 		return documents;
 	}
         
-        public List<Document> getLivres() {
+    /**
+     *
+     * @return
+     */
+    public List<Document> getLivres() {
             List<Document> tmp = new ArrayList();
             for(Document document : documents){
                 if((document instanceof Livre) && (document instanceof Roman) == false && (document instanceof Manuel) == false)
@@ -48,7 +61,11 @@ public class Bibliotheque {
             return tmp;
 	}
         
-        public List<Document> getRomans() {
+    /**
+     *
+     * @return
+     */
+    public List<Document> getRomans() {
             List<Document> tmp = new ArrayList();
             for(Document document : documents){
                 if(document instanceof Roman)
@@ -57,7 +74,11 @@ public class Bibliotheque {
             return tmp;
 	}
         
-        public List<Document> getManuels() {
+    /**
+     *
+     * @return
+     */
+    public List<Document> getManuels() {
             List<Document> tmp = new ArrayList();
             for(Document document : documents){
                 if(document instanceof Manuel)
@@ -66,7 +87,11 @@ public class Bibliotheque {
             return tmp;
 	}
         
-        public List<Document> getRevues() {
+    /**
+     *
+     * @return
+     */
+    public List<Document> getRevues() {
             List<Document> tmp = new ArrayList();
             for(Document document : documents){
                 if(document instanceof Revue)
@@ -98,6 +123,8 @@ public class Bibliotheque {
 	/**
 	 * Renvoie le i-ème document de la liste des documents, s'il existe, 
 	 * ou null sinon.
+     * @param i
+     * @return 
 	 */
 	public Document getDocument(int i) {
             if(i > documents.size())
@@ -111,6 +138,8 @@ public class Bibliotheque {
 	 * Si doc est non null et n'appartient pas déjà à la liste des documents,
 	 * alors ajoute doc à cette liste et renvoie true ;
 	 * sinon renvoie faux.
+     * @param doc
+     * @return 
 	 */
 	public boolean addDocument(Document doc) {
             // Si doc est null                
@@ -134,6 +163,8 @@ public class Bibliotheque {
 	/**
 	 * Si doc est dans la liste des documents, alors l'y supprime et renvoie true;
 	 * sinon renvoie false.
+     * @param doc
+     * @return 
 	 */
 	public boolean removeDocument(Document doc) {
             // Si il le doc appartient déjà à la liste
@@ -148,11 +179,17 @@ public class Bibliotheque {
                 return false;
 	}
         
-        public void sortTitre(){
+    /**
+     *
+     */
+    public void sortTitre(){
             Collections.sort(this.documents, TriDocuments.TITRE);
         }
         
-        public void sortAuteur(){
+    /**
+     *
+     */
+    public void sortAuteur(){
             Collections.sort(this.documents, TriDocuments.AUTEUR);
         }
         
@@ -173,7 +210,12 @@ public class Bibliotheque {
             return listDoc;
         }
         
-        public List<Document> rechercheTitre(String titre){
+    /**
+     *
+     * @param titre
+     * @return
+     */
+    public List<Document> rechercheTitre(String titre){
             List<Document> listDoc = new ArrayList<Document>();
             for(Document document : documents){
                 if(document.getTitre().contains(titre))
@@ -182,7 +224,12 @@ public class Bibliotheque {
             return listDoc;
         }
         
-        public List<Document> rechercheAuteur(String auteur){
+    /**
+     *
+     * @param auteur
+     * @return
+     */
+    public List<Document> rechercheAuteur(String auteur){
             List<Document> listDoc = new ArrayList<Document>();
             for(Document document : documents){
                 if(document instanceof Livre){

@@ -1,11 +1,28 @@
 package model;
 
 // TO DO ...
+
+/**
+ *
+ * @author Kilian
+ */
 public class Roman extends Livre {
 
     private Roman prixLitteraire = null;
+
+    /**
+     *
+     */
     public static Roman GONCOURT = new Roman();
+
+    /**
+     *
+     */
     public static Roman MEDICIS = new Roman();
+
+    /**
+     *
+     */
     public static Roman RENAUDOT = new Roman();
     
     /**
@@ -16,6 +33,9 @@ public class Roman extends Livre {
     }
     /**
      * Constructeur d'un roman n'ayant pas reçu de prix littéraire
+     * @param titre
+     * @param nbPages
+     * @param auteur
     */
     public Roman(String titre, String auteur, int nbPages){
         super(titre, auteur, nbPages);
@@ -23,16 +43,28 @@ public class Roman extends Livre {
     
     /**
      * Constructeur d'un roman ayant reçu un prix littéraire
+     * @param titre
+     * @param auteur
+     * @param nbPages
+     * @param prixLitt
     */
     public Roman(String titre, String auteur, int nbPages, Roman prixLitt){
         super(titre, auteur, nbPages);
         prixLitteraire = prixLitt;
     }
 
+    /**
+     *
+     * @return
+     */
     public Roman getPrixLitteraire() {
         return prixLitteraire;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPrixLitt(){
         if(this.prixLitteraire == GONCOURT)
             return "GONCOURT";
@@ -44,6 +76,10 @@ public class Roman extends Livre {
             return "";
     }
 
+    /**
+     *
+     * @param prixLitteraire
+     */
     public void setPrixLitteraire(Roman prixLitteraire) {
         this.prixLitteraire = prixLitteraire;
     }

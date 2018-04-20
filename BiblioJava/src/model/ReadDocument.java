@@ -9,17 +9,29 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Kilian
+ */
 public class ReadDocument {
     
     private List<Document> documents = new ArrayList<Document>();;
     private String line;
     private String[] attr = new String[9];
     private final String fileName;
+
+    /**
+     *
+     * @param fileName
+     */
     public ReadDocument(String fileName){
         this.fileName = fileName;
         build();
     } 
     
+    /**
+     *
+     */
     public void build(){
         BufferedReader file;
         int i = 0;
@@ -63,15 +75,29 @@ public class ReadDocument {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public Document readLivre(){
         Livre doc = new Livre(attr[1], attr[2], Integer.parseInt(attr[3]));
         doc.setNumEnreg(Integer.parseInt(attr[0]));
         return doc;
     }
+
+    /**
+     *
+     * @return
+     */
     public Document readManuel(){
         Manuel doc = new Manuel(attr[1], attr[2], Integer.parseInt(attr[5]), Integer.parseInt(attr[3]));
         return doc;
     }
+
+    /**
+     *
+     * @return
+     */
     public Document readRoman(){
         Roman Prix = null;
             if(attr[4].compareTo("GONCOURT") == 0)
@@ -84,15 +110,28 @@ public class ReadDocument {
             Roman doc = new Roman(attr[1], attr[2], Integer.parseInt(attr[3]), Prix);
         return doc;
     }
+
+    /**
+     *
+     * @return
+     */
     public Document readRevue(){
         Revue doc = new Revue(attr[1], Integer.parseInt(attr[6]), Integer.parseInt(attr[7]));
         return doc;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Document> getDocuments() {
         return documents;
     }
 
+    /**
+     *
+     * @param documents
+     */
     public void setDocuments(List<Document> documents) {
         this.documents = documents;
     }

@@ -1,11 +1,22 @@
 package model;
 
 // TO DO ...
+
+/**
+ *
+ * @author Kilian
+ */
 public class Revue extends Document {
 
     private int mois;
     private int annee;
 
+    /**
+     *
+     * @param titre
+     * @param mois
+     * @param annee
+     */
     public Revue(String titre, int mois, int annee){
         this.setTitre(titre);
         this.mois = mois;
@@ -36,18 +47,34 @@ public class Revue extends Document {
         return builder.toString();
     }
 
+    /**
+     *
+     * @return
+     */
     public int getAnnee() {
         return annee;
     }
 
+    /**
+     *
+     * @param annee
+     */
     public void setAnnee(int annee) {
         this.annee = annee;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMois() {
         return mois;
     }
 
+    /**
+     *
+     * @param mois
+     */
     public void setMois(int mois) {
         this.mois = mois;
     }

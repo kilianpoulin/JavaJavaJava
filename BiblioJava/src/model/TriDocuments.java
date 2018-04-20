@@ -5,7 +5,15 @@ import model.Document;
 import model.Revue;
 import model.Livre;
 
+/**
+ *
+ * @author Kilian
+ */
 public interface TriDocuments {
+
+    /**
+     *
+     */
     static final Comparator<Document>TITRE = 
             new Comparator<Document>() {
                 @Override
@@ -17,6 +25,9 @@ public interface TriDocuments {
                 }
             };
     
+    /**
+     *
+     */
     static final Comparator<Document>AUTEUR = 
             new Comparator<Document>() {
                 @Override

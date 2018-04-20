@@ -25,9 +25,17 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.DefaultCaret;
 import model.Bibliotheque;
 
+/**
+ *
+ * @author Kilian
+ */
 public class AfficherDocuments extends JFrame implements Affichage {
     //private Bibliotheque biblio = null;
-    public static JTextArea text; 
+ 
+    /**
+     *
+     */
+        public static JTextArea text; 
     private Fenetre main = null;
     
     private final JLabel titre = new JLabel("Bibliothèque complète");
@@ -42,11 +50,18 @@ public class AfficherDocuments extends JFrame implements Affichage {
     private final JButton sortRoman = new JButton("Romans");
     private final JButton sortManuel = new JButton("Manuels");
     
+    /**
+     *
+     * @param frame
+     */
     public AfficherDocuments(Fenetre frame){
         this.main = frame;
         build();
     }
     
+    /**
+     *
+     */
     public void build(){
         setTitle("Recherche de documents");
         setMinimumSize(new Dimension(800, 600));
@@ -57,6 +72,10 @@ public class AfficherDocuments extends JFrame implements Affichage {
         setVisible(false);
     }
     
+    /**
+     *
+     * @return
+     */
     public Container buildContentPane(){
         getContentPane().setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();

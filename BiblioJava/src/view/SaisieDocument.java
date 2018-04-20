@@ -18,6 +18,10 @@ import model.Manuel;
 import model.Revue;
 import model.Roman;
 
+/**
+ *
+ * @author Kilian
+ */
 public class SaisieDocument extends JFrame {
 
     private Fenetre main = null;
@@ -37,6 +41,9 @@ public class SaisieDocument extends JFrame {
     private final JLabel labelMois = new JLabel("Mois : ");
     private final JLabel labelAnnee = new JLabel("Annee : ");
     
+    /**
+     *
+     */
     public final JButton valider = new JButton("Valider");
     private final JButton gotomenu = new JButton("Retour au Menu");
     private final JButton Btype = new JButton("Changer");
@@ -52,11 +59,18 @@ public class SaisieDocument extends JFrame {
     private final JComboBox mois = new JComboBox(moisList);
     private final JComboBox annee = new JComboBox(anneeList);
     
-    
+    /**
+     *
+     * @param frame
+     */
     public SaisieDocument(Fenetre frame){
         build();
         this.main = frame;
     }
+
+    /**
+     *
+     */
     public void build(){
         setTitle("Saisie d'un document");
         setMinimumSize(new Dimension(800, 600));

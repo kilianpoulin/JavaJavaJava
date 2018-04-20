@@ -5,6 +5,10 @@ package model;
  */
 public interface InterfaceAuteur {
 
-	abstract public String getAuteur();
+    /**
+     *
+     * @return
+     */
+    abstract public String getAuteur();
 	
 }

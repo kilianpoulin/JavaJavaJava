@@ -28,18 +28,29 @@ import javax.swing.text.DefaultCaret;
 import model.Bibliotheque;
 import model.Document;
 
+/**
+ *
+ * @author Kilian
+ */
 public class RechercheDocument extends JFrame implements Affichage {
     private Bibliotheque biblio_tmp = null;
     List<Document> recherche = null;
     private Fenetre main = null;
     private static JTextArea text; 
     
+    /**
+     *
+     * @param frame
+     */
     public RechercheDocument(Fenetre frame){
         this.main = frame;
         this.biblio_tmp = main.biblio;
         build();
     }
     
+    /**
+     *
+     */
     public void build(){
         setTitle("Rechercher des documents");
         setMinimumSize(new Dimension(800, 600));
@@ -50,6 +61,10 @@ public class RechercheDocument extends JFrame implements Affichage {
         setVisible(false);
     }
     
+    /**
+     *
+     * @return
+     */
     public Container buildContentPane(){
         getContentPane().setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();

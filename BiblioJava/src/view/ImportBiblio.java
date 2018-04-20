@@ -26,17 +26,28 @@ import model.Bibliotheque;
 import model.Document;
 import model.ReadDocument;
 
+/**
+ *
+ * @author Kilian
+ */
 public class ImportBiblio extends JFrame {
     private Fenetre main = null;
     private static JTextArea text; 
     private Object fichier;
     private final String filename = "";
     
+    /**
+     *
+     * @param frame
+     */
     public ImportBiblio(Fenetre frame){
         this.main = frame;
         build();
     }
     
+    /**
+     *
+     */
     public void build(){
         setTitle("Importer une bibliotheque");
         setMinimumSize(new Dimension(800, 600));
@@ -47,6 +58,10 @@ public class ImportBiblio extends JFrame {
         setVisible(false);
     }
     
+    /**
+     *
+     * @return
+     */
     public Container buildContentPane(){
         getContentPane().setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();

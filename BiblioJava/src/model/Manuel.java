@@ -1,10 +1,22 @@
 package model;
 
 // TO DO ...
+
+/**
+ *
+ * @author Kilian
+ */
 public class Manuel extends Livre {
 
     private int niveau;
 
+    /**
+     *
+     * @param titre
+     * @param auteur
+     * @param niveau
+     * @param nbPages
+     */
     public Manuel(String titre, String auteur, int niveau, int nbPages){
         this.setTitre(titre);
         this.setAuteur(auteur);
@@ -38,10 +50,18 @@ public class Manuel extends Livre {
         return builder.toString();
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNiveau() {
         return niveau;
     }
 
+    /**
+     *
+     * @param niveau
+     */
     public void setNiveau(int niveau) {
         this.niveau = niveau;
     }

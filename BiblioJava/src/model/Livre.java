@@ -1,15 +1,29 @@
 package model;
 
 // TO DO ...
+
+/**
+ *
+ * @author Kilian
+ */
 public class Livre extends Document implements InterfaceAuteur {
 
     private String auteur;
     private int nbPages;
 
+    /**
+     *
+     */
     public Livre(){
 
     }
 
+    /**
+     *
+     * @param titre
+     * @param auteur
+     * @param nbPages
+     */
     public Livre(String titre, String auteur, int nbPages){
         super(titre);
         this.auteur = auteur;
@@ -41,18 +55,34 @@ public class Livre extends Document implements InterfaceAuteur {
         return builder.toString();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAuteur() {
         return auteur;
     }
 
+    /**
+     *
+     * @param auteur
+     */
     public void setAuteur(String auteur) {
         this.auteur = auteur;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNbPages() {
         return nbPages;
     }
 
+    /**
+     *
+     * @param nbPages
+     */
     public void setNbPages(int nbPages) {
         this.nbPages = nbPages;
     }

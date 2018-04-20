@@ -26,13 +26,24 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.DefaultCaret;
 import model.Bibliotheque;
 
+/**
+ *
+ * @author Kilian
+ */
 public class Test extends JFrame implements Affichage {
     private Bibliotheque biblio = null;
     private static JTextArea text; 
+
+    /**
+     *
+     */
     public Test(){
         build();
     }
     
+    /**
+     *
+     */
     public void build(){
         setTitle("Affichage de la bibliotheque");
         setMinimumSize(new Dimension(800, 600));
@@ -43,6 +54,10 @@ public class Test extends JFrame implements Affichage {
         setVisible(true);
     }
     
+    /**
+     *
+     * @return
+     */
     public Container buildContentPane(){
         getContentPane().setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
