@@ -169,6 +169,15 @@ public class SaisieDocument extends JFrame {
                                                 Integer.parseInt(textPages.getText()));
                                         }
                                         main.biblio.addDocument(roman);
+                                        ActionEvent event;
+                                        long when;
+
+                                        when  = System.currentTimeMillis();
+                                        event = new ActionEvent(main.frame_afficher.refresh, ActionEvent.ACTION_PERFORMED, "Anything", when, 0);
+
+                                        for (ActionListener listener : main.frame_afficher.refresh.getActionListeners()) {
+                                            listener.actionPerformed(event);
+                                        }
                                         setVisible(false);
                                         main.frame_afficher.setVisible(true);
                                     }

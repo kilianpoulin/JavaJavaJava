@@ -270,7 +270,19 @@ public class RechercheDocument extends JFrame implements Affichage {
                 { 
                     for(Document document : biblio_tmp.getDocuments()){
                         main.biblio.removeDocument(document);
+                        
+                        // on rafraichit la bibliothèque
+                        ActionEvent event;
+                        long when;
+
+                        when  = System.currentTimeMillis();
+                        event = new ActionEvent(main.frame_afficher.refresh, ActionEvent.ACTION_PERFORMED, "Anything", when, 0);
+
+                        for (ActionListener listener : main.frame_afficher.refresh.getActionListeners()) {
+                            listener.actionPerformed(event);
+                        }
                         setVisible(false);
+                        // on redirige
                         main.frame_afficher.setVisible(true);
                     }
                 }

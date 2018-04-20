@@ -51,9 +51,9 @@ public class Roman extends Livre {
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
-        if(this.getNumEnreg() > 9)
+        if(this.getNumEnreg() < 9)
             builder.append(" ");
-        if(this.getNumEnreg() > 99)
+        if(this.getNumEnreg() < 99)
             builder.append(" ");
         builder.append(this.getNumEnreg());
         builder.append("   [Roman]");

@@ -32,8 +32,8 @@ public class AfficherDocuments extends JFrame implements Affichage {
     
     private final JLabel titre = new JLabel("Bibliothèque complète");
 
-    
-    public final JButton sortTitre = new JButton("Trier par Titre");       
+    final JButton refresh = new JButton();
+    private final JButton sortTitre = new JButton("Trier par Titre");       
     private final JButton sortAuteur = new JButton("Trier par Auteur");
     private final JButton exporter = new JButton("Exporter");
     private final JButton gotomenu = new JButton("Menu");
@@ -346,6 +346,24 @@ public class AfficherDocuments extends JFrame implements Affichage {
                 public void actionPerformed(ActionEvent e)
                 { 
                     final String jTextAreaText = Affichage.afficherDocument(main.biblio.getManuels());
+                    SwingUtilities.invokeLater(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            text.setText(jTextAreaText);
+                        }            
+                    });
+                }
+        }
+        );
+        
+        refresh.addActionListener(new ActionListener()
+        {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                { 
+                    final String jTextAreaText = Affichage.afficherDocument(main.biblio.getDocuments());
                     SwingUtilities.invokeLater(new Runnable()
                     {
                         @Override

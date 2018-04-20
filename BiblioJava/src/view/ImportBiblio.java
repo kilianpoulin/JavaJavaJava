@@ -38,7 +38,7 @@ public class ImportBiblio extends JFrame {
     }
     
     public void build(){
-        setTitle("Affichage de la bibliotheque");
+        setTitle("Importer une bibliotheque");
         setMinimumSize(new Dimension(800, 600));
         setPreferredSize(new Dimension(800, 600));
         setContentPane(buildContentPane());
@@ -77,7 +77,7 @@ public class ImportBiblio extends JFrame {
             gbc.weighty = 1.;
             gbc.fill = GridBagConstraints.NONE;
             gbc.anchor = GridBagConstraints.BASELINE_LEADING; 
-            gbc.insets = new Insets(50, 50, 0, 0);
+            gbc.insets = new Insets(100, 50, 0, 0);
             
             JLabel labelFichier = new JLabel("Nom du fichier : ");
             labelFichier.setHorizontalAlignment(JLabel.CENTER);
@@ -91,7 +91,7 @@ public class ImportBiblio extends JFrame {
             gbc.gridy = 1;
             gbc.gridheight = 1; 
             gbc.anchor = GridBagConstraints.BASELINE;
-            gbc.insets = new Insets(50, 0, 0, 30);
+            gbc.insets = new Insets(100, 0, 0, 30);
 
             JTextField file_name = new JTextField(filename);
             file_name.setPreferredSize(new Dimension(300, 36));
@@ -106,7 +106,7 @@ public class ImportBiblio extends JFrame {
             gbc.gridwidth = GridBagConstraints.REMAINDER; 
             gbc.gridheight = 1; 
             gbc.anchor = GridBagConstraints.BASELINE;
-            gbc.insets = new Insets(50, 0, 0, 30);
+            gbc.insets = new Insets(100, 0, 0, 30);
 
             JButton parcourir = new JButton("Parcourir");
             parcourir.setFont(new Font("TimesRoman", Font.ITALIC , 24));
@@ -122,7 +122,7 @@ public class ImportBiblio extends JFrame {
          */ 
         gbc.gridx = 0;
         gbc.gridy = 2; // on se positionne sur la ligne suivante
-        gbc.insets = new Insets(0, 0, 0, 75);
+        gbc.insets = new Insets(0, -100, 0, 75);
         
         JButton importer = new JButton("Importer");
         importer.setFont(new Font("TimesRoman", Font.ITALIC , 24));
@@ -179,6 +179,18 @@ public class ImportBiblio extends JFrame {
                         ReadDocument file = new ReadDocument(file_name.getText());
                         main.biblio = new Bibliotheque(file.getDocuments());
                         setVisible(false);
+                        
+                        // on rafraichit l'affichage de la bibliotheque
+                        ActionEvent event;
+                        long when;
+
+                        when  = System.currentTimeMillis();
+                        event = new ActionEvent(main.frame_afficher.refresh, ActionEvent.ACTION_PERFORMED, "Anything", when, 0);
+
+                        for (ActionListener listener : main.frame_afficher.refresh.getActionListeners()) {
+                            listener.actionPerformed(event);
+                        }
+                        // on redirige
                         main.frame_afficher.setVisible(true);
                     }
                 }
