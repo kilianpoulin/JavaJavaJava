@@ -42,13 +42,6 @@ public class TestDocuments {
             
             System.out.println("Bienvenue dans la plus grande bibliothèque au monde !\n");
             System.out.println("\n ** Si vous n'importez pas de bibliothèque, celle par defaut sera utilisée **\n\n");
-            
-           /* Bibliotheque deepBiblio = biblio.clone();
-                        biblio.getDocument(1).setTitre("aaaaaa");
-                        
-                        System.out.println(biblio);
-                        System.out.println("\n"  + deepBiblio);
-*/
                 
             do{
                 
@@ -285,15 +278,72 @@ public class TestDocuments {
                         break;
                         
                     case 5 : 
-                        Bibliotheque deepBiblio = biblio.clone();
-                        biblio.getDocument(0).setTitre("aaaaaa");
-                        biblio.getDocument(1).setTitre("aaaaaa");
+                        System.out.println("\nClonage profond de la bibliothèque : \n");
                         
+                        System.out.println("Dans ce test, les trois premiers documents de la bibliothèque intiale vont être modifiés, "
+                                + "ainsi que le quatrième document de la bibliothèque clonée\n");
+                        Bibliotheque deepBiblio = biblio.clone();
+                        
+                        // on modifie les trois premiers éléments de la bibliothèque intiale
+                        for(int i = 0; i < 3; i++){
+                            if(biblio.getDocument(i) instanceof Livre){
+                                Livre livre = (Livre) biblio.getDocument(i);
+                                livre.setTitre("Test " + i);
+                                livre.setNbPages(12);
+                            }
+                            else if(biblio.getDocument(i) instanceof Manuel){
+                                Manuel manuel = (Manuel) biblio.getDocument(i);
+                                manuel.setTitre("Test " + i);
+                                manuel.setNbPages(12);
+                            }
+                            else if(biblio.getDocument(i) instanceof Roman){
+                                Roman roman = (Roman) biblio.getDocument(i);
+                                roman.setTitre("Test " + i);
+                                roman.setNbPages(12);
+                            }
+                            else if(biblio.getDocument(i) instanceof Revue){
+                                Revue revue = (Revue) biblio.getDocument(i);
+                                revue.setTitre("Test " + i);
+                            }
+                            
+                        }   
+                        
+                        // on modifie le quatrième élément de la bibliothèque clonée
+                        if(deepBiblio.getDocument(3) instanceof Livre){
+                            Livre livre = (Livre) deepBiblio.getDocument(3);
+                            livre.setTitre("TEST " + 3);
+                            livre.setNbPages(12);
+                        }
+                        else if(deepBiblio.getDocument(3) instanceof Manuel){
+                            Manuel manuel = (Manuel) deepBiblio.getDocument(3);
+                            manuel.setTitre("TEST " + 3);
+                            manuel.setNbPages(12);
+                        }
+                        else if(deepBiblio.getDocument(3) instanceof Roman){
+                            Roman roman = (Roman) deepBiblio.getDocument(3);
+                            roman.setTitre("TEST " + 3);
+                            roman.setNbPages(12);
+                        }
+                        else if(deepBiblio.getDocument(3) instanceof Revue){
+                            Revue revue = (Revue) deepBiblio.getDocument(3);
+                            revue.setTitre("TEST " + 3);
+                        }
                         
                         System.out.println("------------Bibliothèque initiale--------\n");
                         System.out.println(biblio);
+                        
                         System.out.println("\n------------Bibliothèque clonée --------\n");
                         System.out.println(deepBiblio);
+                        
+                        System.out.println("==> Les titres et nombres de pages des trois "
+                                + "premiers document de la bibliothèque initiale ont été modifié, "
+                                + "pas ceux de la bibliothèque clonée\n");
+                        
+                        System.out.println("==> Le titre et le nombre de page du quatrième "
+                                + "document de la bibliothèque clonée a été modifié, "
+                                + "pas celui de la bibliothèque initiale\n");
+                        
+                        System.out.println("==> Le clonage profond est réussi.\n");
                     break;
                 }
 

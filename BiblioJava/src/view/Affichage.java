@@ -28,6 +28,13 @@ public interface Affichage {
             return biblio.toString();
         }
     
+    /**
+     * Limite l'affichage à la liste d'auteurs.
+     * @param docs
+     *      La liste de documents à afficher
+     * @return 
+     *      un élement de type String affichant tous les auteurs.
+     */
     public static String afficherAuteur(Collection<Document> docs){
             StringBuilder biblio = new StringBuilder();
             int tmp = 1;
