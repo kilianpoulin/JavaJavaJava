@@ -105,7 +105,7 @@ public class ReadDocument {
      * @return
      */
     public Document readRoman(){
-        Roman Prix = null;
+        String Prix = null;
             if(attr[4].compareTo("GONCOURT") == 0)
                 Prix = Roman.GONCOURT;
             else if(attr[4].compareTo("MEDICIS") == 0)

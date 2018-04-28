@@ -26,6 +26,10 @@ public class Manuel extends Livre {
         this.niveau = niveau;
     }
     
+    public Manuel(Manuel that){
+        this(that.getTitre(), that.getAuteur(), that.getNiveau(), that.getNbPages());
+    }
+    
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
@@ -69,5 +73,13 @@ public class Manuel extends Livre {
     public void setNiveau(int niveau) {
         this.niveau = niveau;
     } 
-
+    
+    public Manuel clone() throws CloneNotSupportedException{
+        Manuel manuel = (Manuel) super.clone();
+        setTitre(manuel.getTitre());
+        setAuteur(manuel.getAuteur());
+        setNbPages(manuel.getNbPages());
+        niveau = manuel.niveau;
+        return manuel;
+    }
 }

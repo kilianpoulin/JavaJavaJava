@@ -7,22 +7,22 @@ package model;
  */
 public class Roman extends Livre {
 
-    private Roman prixLitteraire = null;
+    private String prixLitteraire = null;
 
     /**
      *  Variable désignant le prix GONCOURT.
      */
-    public static Roman GONCOURT = new Roman();
+    public static String GONCOURT = "GONCOURT";
 
     /**
      * Variable désignant le prix MEDICIS.
      */
-    public static Roman MEDICIS = new Roman();
+    public static String MEDICIS = "MEDICIS";
 
     /**
      * Variable désignant le prix RENAUDOT.
      */
-    public static Roman RENAUDOT = new Roman();
+    public static String RENAUDOT = "RENAUDOT";
     
     /**
      * Constructeur pour créer un roman vide
@@ -48,33 +48,21 @@ public class Roman extends Livre {
      * @param prixLitt
      *      Prix littéraire reçu (est de type Roman, correspond à une variable static).
     */
-    public Roman(String titre, String auteur, int nbPages, Roman prixLitt){
+    public Roman(String titre, String auteur, int nbPages, String prixLitt){
         super(titre, auteur, nbPages);
         prixLitteraire = prixLitt;
+    }
+    
+    public Roman(Roman that){
+        this(that.getTitre(), that.getAuteur(), that.getNbPages(), that.getPrixLitteraire());
     }
 
     /**
      *  Getter du prix littéraire (correspond à une variable static de type Roman).
      * @return
      */
-    public Roman getPrixLitteraire() {
+    public String getPrixLitteraire() {
         return prixLitteraire;
-    }
-    
-    /**
-     *  Affichage du prix Littéraire non plus comme un élément de type Roman mais comme un String.
-     * @return
-     *      une chaine de caractère (vide si le roman n'a pas reçu de prix littéraire).
-     */
-    public String getPrixLitt(){
-        if(this.prixLitteraire == GONCOURT)
-            return "GONCOURT";
-        else if(this.prixLitteraire == MEDICIS)
-            return "MEDICIS";
-        else if(this.prixLitteraire == RENAUDOT)
-            return "RENAUDOT";
-        else
-            return "";
     }
 
     /**
@@ -82,7 +70,7 @@ public class Roman extends Livre {
      * @param prixLitteraire
      *      De type roman (correspond à une variable static)
      */
-    public void setPrixLitteraire(Roman prixLitteraire) {
+    public void setPrixLitteraire(String prixLitteraire) {
         this.prixLitteraire = prixLitteraire;
     }
     
@@ -109,11 +97,20 @@ public class Roman extends Livre {
         if(this.prixLitteraire != null){
             builder.append("     ==> a reçu le ");
             builder.append("Prix ");
-            builder.append(this.getPrixLitt());
+            builder.append(this.getPrixLitteraire());
         }
         builder.append("\n");
         return builder.toString();
     }
 	
+    @Override
+    public Roman clone() throws CloneNotSupportedException{
+        Roman roman = (Roman) super.clone();
+        setTitre(roman.getTitre());
+        setAuteur(roman.getAuteur());
+        setNbPages(roman.getNbPages()); 
+        setPrixLitteraire(roman.getPrixLitteraire());
+        return roman;
+    }
         
 }

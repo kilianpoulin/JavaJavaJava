@@ -23,7 +23,7 @@ import model.Bibliotheque;
  */
 public class Fenetre extends JFrame {
 
-    public static Bibliotheque biblio = null;
+    public Bibliotheque biblio = null;
     AfficherDocuments frame_afficher = null;
     RechercheDocument frame_recherche = null;
     SaisieDocument frame_saisie = null;

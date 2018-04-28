@@ -7,7 +7,7 @@ package model;
  *  Elle a deux sous-classes (ROMAN et MANUEL)
  * @author Kilian
  */
-public class Livre extends Document implements InterfaceAuteur {
+public class Livre extends Document implements InterfaceAuteur, Cloneable {
 
     private String auteur;
     private int nbPages;
@@ -29,6 +29,10 @@ public class Livre extends Document implements InterfaceAuteur {
         super(titre);
         this.auteur = auteur;
         this.nbPages = nbPages;
+    }
+    
+    public Livre(Livre that){
+        this(that.getTitre(), that.getAuteur(), that.getNbPages());
     }
     
     @Override
@@ -90,6 +94,14 @@ public class Livre extends Document implements InterfaceAuteur {
      */
     public void setNbPages(int nbPages) {
         this.nbPages = nbPages;
+    }
+    
+    @Override
+    public Livre clone() throws CloneNotSupportedException{
+        Livre livre = (Livre) super.clone();
+        livre.auteur = auteur;
+        livre.nbPages = nbPages;
+        return livre;
     }
         
 }

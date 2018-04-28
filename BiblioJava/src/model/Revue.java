@@ -24,6 +24,10 @@ public class Revue extends Document {
         this.annee = annee;
     }
     
+    public Revue(Revue that){
+        this(that.getTitre(), that.getMois(), that.getAnnee());
+    }
+    
     @Override
     public String toString(){
         StringBuilder builder = new StringBuilder();
@@ -84,5 +88,13 @@ public class Revue extends Document {
         this.mois = mois;
     }
 	
+    @Override
+    public Revue clone() throws CloneNotSupportedException{
+        Revue revue = (Revue) super.clone();
+        setTitre(revue.getTitre());
+        mois = revue.mois;
+        annee = revue.annee;
+        return revue;
+    }
         
 }

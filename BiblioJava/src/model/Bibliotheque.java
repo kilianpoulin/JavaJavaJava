@@ -18,7 +18,7 @@ import java.util.Arrays;
  * Elle contient de nombreuses fonctions permettant d'ajouter, de supprimer et de trier des documents.
  * @author Kilian
  */
-public class Bibliotheque {
+public class Bibliotheque implements Cloneable {
 
 	// Liste des documents de la bibliotheque
 	private List<Document> documents;
@@ -211,12 +211,12 @@ public class Bibliotheque {
      * @return
      *      une liste de documents
      */
-    public List<Document> recherchePrixLitt(Roman Prix){
+    public List<Document> recherchePrixLitt(String Prix){
             List<Document> listDoc = new ArrayList<Document>();
             for(Document document : documents){
                 if(document instanceof Roman){
                     Roman roman = (Roman) document;
-                    if(roman.getPrixLitteraire() == Prix)
+                    if(roman.getPrixLitteraire().compareTo(Prix) == 0)
                         listDoc.add(document);
                 }
             }
@@ -290,7 +290,7 @@ public class Bibliotheque {
                                 if(livre instanceof Roman){
                                     type = "Roman";
                                     Roman roman = (Roman) livre;
-                                    file.print(roman.getPrixLitt()+";;");
+                                    file.print(roman.getPrixLitteraire()+";;");
                                 }
                                 else if(livre instanceof Manuel){
                                     type = "Manuel";
@@ -337,4 +337,17 @@ public class Bibliotheque {
             }
             return biblio.toString();
 	}	
+        
+        @Override
+        public Bibliotheque clone() throws CloneNotSupportedException {
+            Bibliotheque deepBiblio = (Bibliotheque) super.clone();
+            deepBiblio.documents = new ArrayList();
+       
+            for(Document document : documents){
+                deepBiblio.addDocument(document.clone());
+            }
+            
+            return deepBiblio;
+           
+        }
 }
