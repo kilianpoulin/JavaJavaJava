@@ -26,7 +26,7 @@ public class TestDocuments {
      * @param args
      * @throws java.io.FileNotFoundException
 	 */
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException, CloneNotSupportedException {
             
             Bibliotheque biblio = new Bibliotheque();
             Bibliotheque biblio_tmp = null;
@@ -42,6 +42,13 @@ public class TestDocuments {
             
             System.out.println("Bienvenue dans la plus grande bibliothèque au monde !\n");
             System.out.println("\n ** Si vous n'importez pas de bibliothèque, celle par defaut sera utilisée **\n\n");
+            
+           /* Bibliotheque deepBiblio = biblio.clone();
+                        biblio.getDocument(1).setTitre("aaaaaa");
+                        
+                        System.out.println(biblio);
+                        System.out.println("\n"  + deepBiblio);
+*/
                 
             do{
                 
@@ -49,7 +56,9 @@ public class TestDocuments {
                 System.out.println("[1] Rechercher un document (et eventuellement le supprimer)\n");
                 System.out.println("[2] Ajouter un document\n");
                 System.out.println("[3] Afficher toute la bibliotheque (et la trier)\n");
-                System.out.println("[4] QUITTER LE PROGRAMME\n");
+                System.out.println("[4] Afficher la liste des auteurs\n");
+                System.out.println("[5] Effectuer un clonage profond de la bibliothèque\n");
+                System.out.println("[6] QUITTER LE PROGRAMME\n");
                 System.out.println("Choix : ");
                 choix = sc.nextInt();
 
@@ -271,9 +280,24 @@ public class TestDocuments {
                                     break;
                             }
                             break;
+                    case 4 : 
+                        //System.out.println("\n => Afficher la liste des auteurs  <=\n");
+                        break;
+                        
+                    case 5 : 
+                        Bibliotheque deepBiblio = biblio.clone();
+                        biblio.getDocument(0).setTitre("aaaaaa");
+                        biblio.getDocument(1).setTitre("aaaaaa");
+                        
+                        
+                        System.out.println("------------Bibliothèque initiale--------\n");
+                        System.out.println(biblio);
+                        System.out.println("\n------------Bibliothèque clonée --------\n");
+                        System.out.println(deepBiblio);
+                    break;
                 }
 
-            }while(choix < 4);
+            }while(choix < 6);
             
             System.out.println(" => FIN DU PROGRAMME <= \n Pensez à fermer la fenêtre !");
         }

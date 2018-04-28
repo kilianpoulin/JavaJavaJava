@@ -7,7 +7,7 @@ package model;
  *  Au total, elle a quatre sous-classes (ROMAN, MANUEL, REVUE, LIVRE)
  * @author Kilian
  */
-public abstract class Document {
+public abstract class Document implements Cloneable {
 	
     /**
      *  Chaque document a un numéro référence (son ordre d'enregistrement).
@@ -35,6 +35,10 @@ public abstract class Document {
         this.titre = titre;
         this.numEnreg = Nb_Enreg;
         Nb_Enreg++;
+    }
+    
+    public Document(Document that){
+        this(that.getTitre());
     }
     
     @Override
@@ -88,6 +92,39 @@ public abstract class Document {
      */
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+    
+    @Override
+    public Document clone() throws CloneNotSupportedException{
+        Document document = (Document) super.clone();
+        
+        if(this instanceof Livre){
+            document = (Livre) super.clone();
+        }
+        else if(this instanceof Roman){
+            document = (Roman) super.clone();
+        }
+        else if(this instanceof Manuel){
+            document = (Manuel) super.clone();
+        }
+        else if(this instanceof Revue){
+            document = (Revue) super.clone();
+        }
+        document.titre = titre;
+        return (Document) document;
+        
+        /*if(this instanceof Livre){
+            return (Livre) super.clone();
+        }
+        else if(this instanceof Roman){
+            return (Roman) super.clone();
+        }
+        else if(this instanceof Manuel){
+            return (Manuel) super.clone();
+        }
+        else if(this instanceof Revue){
+            return (Revue) super.clone();
+        }*/
     }
 }
 
